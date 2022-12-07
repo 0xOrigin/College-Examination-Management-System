@@ -97,4 +97,31 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    public List<Map<Enum, Object>> getAllRegisteredSubjectsFor(String username){
+
+        List<Enum> fields = Arrays.asList(Column.Code, Column.SubjectName);
+
+        this.selectQuery = new SelectBuilder()
+                .freeSQLStatement("SELECT S.Code, S.Name AS SubjectName\n" +
+                        "FROM User AS U\n" +
+                        "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username +"'\n" +
+                        "JOIN Subject AS S ON R.SubjectCode = S.Code;");
+
+        return super.getList(fields, this.selectQuery);
+    }
+
+    public List<Map<Enum, Object>> getAllTestsFor(String username){
+
+        List<Enum> fields = Arrays.asList(Column.ID, Column.SubjectCode, Column.SubjectName, Column.ExamName, Column.Duration);
+
+        this.selectQuery = new SelectBuilder()
+                .freeSQLStatement("SELECT E.ID, E.SubjectCode, S.Name AS SubjectName, E.Name AS ExamName, Duration\n" +
+                        "FROM User AS U\n" +
+                        "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username + "'\n" +
+                        "JOIN Subject AS S ON R.SubjectCode = S.Code\n" +
+                        "JOIN Exam As E ON E.SubjectCode = S.Code;");
+
+        return super.getList(fields, this.selectQuery);
+    }
+
 }

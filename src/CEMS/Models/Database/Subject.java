@@ -74,7 +74,7 @@ public class Subject extends ModelUtility {
                 .freeSQLStatement("SELECT U.ID AS StudentID, U.Name AS StudentName, S.Name AS SubjectName, E.ID AS ExamID, E.Name AS ExamName, Grade\n" +
                         "From Exam AS E\n" +
                         "JOIN Subject AS S ON S.Code = 'CS413'\n" +
-                        "JOIN take AS T ON T.ExamID = E.ID\n" +
+                        "JOIN Take AS T ON T.ExamID = E.ID\n" +
                         "JOIN User AS U ON T.UserID = U.ID;");
 
         return super.getList(fields, this.selectQuery);
