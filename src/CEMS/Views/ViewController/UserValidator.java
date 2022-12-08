@@ -54,10 +54,10 @@ public class UserValidator extends Utilities {
         return true;
     }
 
-    public boolean checkSelfDeletion(TextField usernameField, Alert alert, String loggedInUsername){
+    public boolean checkSelfDeletion(TextField usernameField, Alert alert, StringBuilder loggedInUsername){
         String alertTitle = "Username field";
         String username = usernameField.getText().trim();
-        if(username.equals(loggedInUsername)){
+        if(username.equals(loggedInUsername.toString())){
             handleAlert(alert, alertTitle, "You cannot delete yourself!", Alert.AlertType.ERROR);
             return false;
         }

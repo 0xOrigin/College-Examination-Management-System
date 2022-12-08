@@ -11,7 +11,7 @@ public class DeleteUser extends Utilities {
     UserValidator userValidator = new UserValidator();
 
     public void delete(ActionEvent event, Alert alert, UserController controller, TextField usernameField,
-                       String loggedInUsername){
+                       StringBuilder loggedInUsername){
 
         super.setAlertOwner(event, alert);
         boolean generalState;

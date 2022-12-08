@@ -8,7 +8,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class StudentDashboardViewController extends Utilities implements Controller {
 
-    String name, username;
+    String name;
+    StringBuilder username;
 
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
@@ -21,7 +22,7 @@ public class StudentDashboardViewController extends Utilities implements Control
     }
 
     @Override
-    public void setUsername(String username) {
+    public void setUsername(StringBuilder username) {
         this.username = username;
     }
 

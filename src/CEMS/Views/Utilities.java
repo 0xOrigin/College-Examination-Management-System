@@ -35,7 +35,7 @@ public class Utilities {
     }
 
     private void setControllerData(Controller controller, String username, String name){
-        controller.setUsername(username);
+        controller.setUsername(new StringBuilder(username));
         controller.setNameOfUser(name);
     }
 

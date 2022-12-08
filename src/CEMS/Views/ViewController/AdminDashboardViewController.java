@@ -25,7 +25,8 @@ import java.util.ResourceBundle;
 
 public class AdminDashboardViewController extends Utilities implements Controller, Initializable {
 
-    String name, username;
+    String name;
+    StringBuilder username;
     UserController userController = new UserControllerImp(new CEMS_DbContext());
     SubjectController subjectController = new SubjectControllerImp(new CEMS_DbContext());
     private Alert alert;
@@ -124,7 +125,7 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     void onUpdateUserButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new UpdateUser().update(event, alert, userController, currentUsernameField, usernameField1,
-                emailField1, passwordField1);
+                emailField1, passwordField1, this.username);
     }
 
     @FXML
@@ -187,7 +188,7 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     }
 
     @Override
-    public void setUsername(String username) {
+    public void setUsername(StringBuilder username) {
         this.username = username;
     }
 

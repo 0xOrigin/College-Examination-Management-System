@@ -4,6 +4,6 @@ public interface Controller {
 
     void setNameOfUser(String name);
 
-    void setUsername(String username);
+    void setUsername(StringBuilder username);
 
 }

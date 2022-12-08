@@ -11,7 +11,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class LecturerDashboardViewController extends Utilities implements Controller {
 
-    String name, username;
+    String name;
+    StringBuilder username;
     @FXML
     private TabPane tabPane;
     @FXML
@@ -45,7 +46,7 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     }
 
     @Override
-    public void setUsername(String username) {
+    public void setUsername(StringBuilder username) {
         this.username = username;
     }
 

@@ -17,7 +17,7 @@ public class UpdateUser extends Utilities {
     UserValidator userValidator = new UserValidator();
 
     public void update(ActionEvent event, Alert alert, UserController controller, TextField currentUsernameField,
-                       TextField usernameField, TextField emailField, PasswordField passwordField){
+                       TextField usernameField, TextField emailField, PasswordField passwordField, StringBuilder loggedInUsername){
 
         super.setAlertOwner(event, alert);
         boolean generalState;
@@ -36,6 +36,8 @@ public class UpdateUser extends Utilities {
         if(generalState){
             controller.update(Arrays.asList(Column.Email, Column.Username, Column.Password),
                     Arrays.asList(email, username, password), currentUsername);
+            loggedInUsername.setLength(0);
+            loggedInUsername.append(username);
             handleAlert(alert, "Successful Update",
                     "A message was sent to the updated email that includes the username and password.",
                     Alert.AlertType.INFORMATION);
