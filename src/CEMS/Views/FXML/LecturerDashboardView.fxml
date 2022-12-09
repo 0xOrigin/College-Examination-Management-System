@@ -270,7 +270,7 @@
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="11.0" text="Question">
+                        <Label layoutX="14.0" layoutY="11.0" text="Question Content">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
@@ -367,12 +367,12 @@
                               <Font name="Arial" size="16.0" />
                            </font>
                         </Button>
-                        <Label layoutX="9.0" layoutY="60.0" text="Question">
+                        <Label layoutX="9.0" layoutY="60.0" text="Question Content">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="contentField1" layoutX="9.0" layoutY="86.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="contentField1" disable="true" layoutX="9.0" layoutY="86.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -382,7 +382,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="choice1Field1" layoutX="9.0" layoutY="143.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice1Field1" disable="true" layoutX="9.0" layoutY="143.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -392,7 +392,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="choice2Field1" layoutX="9.0" layoutY="198.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice2Field1" disable="true" layoutX="9.0" layoutY="198.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -402,7 +402,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="choice3Field1" layoutX="9.0" layoutY="253.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice3Field1" disable="true" layoutX="9.0" layoutY="253.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -412,7 +412,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="choice4Field1" layoutX="9.0" layoutY="307.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice4Field1" disable="true" layoutX="9.0" layoutY="307.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -422,7 +422,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="choice5Field1" layoutX="9.0" layoutY="362.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice5Field1" disable="true" layoutX="9.0" layoutY="362.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -432,12 +432,12 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="correctAnswerField1" layoutX="9.0" layoutY="415.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="correctAnswerField1" disable="true" layoutX="9.0" layoutY="415.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="updateQuestionButton" layoutX="519.0" layoutY="379.0" mnemonicParsing="false" onAction="#onUpdateQuestionButtonAction" prefHeight="63.0" prefWidth="171.0" text="Update">
+                        <Button fx:id="updateQuestionButton" disable="true" layoutX="519.0" layoutY="379.0" mnemonicParsing="false" onAction="#onUpdateQuestionButtonAction" prefHeight="63.0" prefWidth="171.0" text="Update">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>

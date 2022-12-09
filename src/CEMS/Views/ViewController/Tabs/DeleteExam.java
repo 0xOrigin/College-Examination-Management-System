@@ -2,7 +2,7 @@ package CEMS.Views.ViewController.Tabs;
 
 import CEMS.Controllers.ExamController;
 import CEMS.Views.Utilities;
-import CEMS.Views.ViewController.ExamValidator;
+import CEMS.Views.ViewController.Validator.ExamValidator;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;

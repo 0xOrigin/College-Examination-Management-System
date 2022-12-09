@@ -2,12 +2,11 @@ package CEMS.Models.Database;
 
 import CEMS.Models.Enum.Column;
 import CEMS.Models.Enum.Table;
-import ORM.Adapter;
-import ORM.Resource;
-import ORM.SelectBuilder;
-import ORM.SelectQuery;
+import ORM.*;
+import ORM.Utilities.ModelExceptionHandler;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -56,4 +55,31 @@ public class Question extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    public boolean isQuestionAvailableToUser(String username, String questionID){
+
+        boolean isAvailable = false;
+
+        this.selectQuery = new SelectBuilder()
+                .freeSQLStatement("SELECT COUNT(Q.ID)\n" +
+                        "FROM User AS U\n" +
+                        "JOIN Register AS R ON R.UserID = U.ID AND U.Username = '" + username + "'\n" +
+                        "JOIN Exam AS E ON R.SubjectCode = E.SubjectCode\n" +
+                        "JOIN Question AS Q ON Q.ExamID = E.ID AND Q.ID = '" + questionID + "';\n");
+
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+
+        try {
+
+            if(!this.resource.isResultSetEmpty())
+                isAvailable = (this.resultSet.getInt(1) == 1);
+
+        } catch(SQLException ex){
+            ModelExceptionHandler.handle(ex, true);
+        } finally {
+            this.resource.close();
+        }
+
+        return isAvailable;
+    }
 }

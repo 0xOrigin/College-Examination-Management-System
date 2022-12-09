@@ -31,8 +31,18 @@ public class QuestionControllerImp implements QuestionController {
     }
 
     @Override
+    public Map<Enum, Object> getQuestionInfo(String questionID, List<Enum> fields){
+        return this.dbContext.getQuestionModel().getInfo(fields, questionID);
+    }
+
+    @Override
     public List<Map<Enum, Object>> getAllQuestionsFor(String examID){
         return this.dbContext.getQuestionModel().getAllQuestionsFor(examID);
+    }
+
+    @Override
+    public boolean isQuestionAvailableToUser(String username, String questionID){
+        return this.dbContext.getQuestionModel().isQuestionAvailableToUser(username, questionID);
     }
 
 }

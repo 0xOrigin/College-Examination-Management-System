@@ -12,6 +12,10 @@ public interface QuestionController {
 
     void delete(String questionID);
 
+    Map<Enum, Object> getQuestionInfo(String questionID, List<Enum> fields);
+
     List<Map<Enum, Object>> getAllQuestionsFor(String examID);
+
+    boolean isQuestionAvailableToUser(String username, String questionID);
 
 }

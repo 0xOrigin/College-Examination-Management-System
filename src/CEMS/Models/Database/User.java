@@ -105,7 +105,7 @@ public class User extends ModelUtility {
                 .freeSQLStatement("SELECT S.Code, S.Name AS SubjectName\n" +
                         "FROM User AS U\n" +
                         "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username +"'\n" +
-                        "JOIN Subject AS S ON R.SubjectCode = S.Code;");
+                        "JOIN Subject AS S ON R.SubjectCode = S.Code;\n");
 
         return super.getList(fields, this.selectQuery);
     }
@@ -119,7 +119,7 @@ public class User extends ModelUtility {
                         "FROM User AS U\n" +
                         "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username + "'\n" +
                         "JOIN Subject AS S ON R.SubjectCode = S.Code\n" +
-                        "JOIN Exam As E ON E.SubjectCode = S.Code;");
+                        "JOIN Exam As E ON E.SubjectCode = S.Code;\n");
 
         return super.getList(fields, this.selectQuery);
     }
@@ -134,7 +134,7 @@ public class User extends ModelUtility {
                 .freeSQLStatement("SELECT COUNT(S.Code) AS SubjectsCount\n" +
                         "FROM User AS U\n" +
                         "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username +"'\n" +
-                        "JOIN Subject AS S ON R.SubjectCode = S.Code;");
+                        "JOIN Subject AS S ON R.SubjectCode = S.Code;\n");
 
         this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
         this.resource = new Resource(this.resultSet);

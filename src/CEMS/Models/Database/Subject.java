@@ -75,7 +75,7 @@ public class Subject extends ModelUtility {
                         "From Exam AS E\n" +
                         "JOIN Subject AS S ON E.SubjectCode = S.Code AND S.Code = '" + subjectCode + "'\n" +
                         "JOIN Take AS T ON T.ExamID = E.ID\n" +
-                        "JOIN User AS U ON T.UserID = U.ID;");
+                        "JOIN User AS U ON T.UserID = U.ID;\n");
 
         return super.getList(fields, this.selectQuery);
     }

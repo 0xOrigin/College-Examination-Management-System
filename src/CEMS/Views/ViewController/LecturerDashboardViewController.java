@@ -11,9 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -31,11 +29,7 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     List<Map<Enum, Object>> subjects;
     private Alert alert;
     @FXML
-    private Button addExamButton;
-    @FXML
     private Tab addExamTab;
-    @FXML
-    private Button addQuestionButton;
     @FXML
     private Tab addQuestionTab;
     @FXML
@@ -81,15 +75,7 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     private TableColumn<Map, Enum> correctAnswerTableColumn;
     @FXML
-    private Button currentExamButton;
-    @FXML
-    private Button currentQuestionButton;
-    @FXML
-    private Button deleteExamButton;
-    @FXML
     private Tab deleteExamTab;
-    @FXML
-    private Button deleteQuestionButton;
     @FXML
     private Tab deleteQuestionTab;
     @FXML
@@ -127,8 +113,6 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     private Tab listExamsTab;
     @FXML
-    private Button logoutButton;
-    @FXML
     private Label nameLabel;
     @FXML
     private TextField questionIdField;
@@ -148,8 +132,6 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     private ComboBox<String> selectSubjectField4;
     @FXML
     private ComboBox<String> selectSubjectField5;
-    @FXML
-    private Button showReportButton;
     @FXML
     private Tab showReportTab;
     @FXML
@@ -181,8 +163,6 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     private Tab updateQuestionTab;
     @FXML
-    private Button viewExamButton;
-    @FXML
     private Tab viewExamTab;
 
     @FXML
@@ -198,12 +178,17 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
     @FXML
     void onAddQuestionButtonAction(ActionEvent event) {
-
+        alert = new Alert(Alert.AlertType.ERROR);
+        new AddQuestion().add(event, alert, questionController, examController, selectSubjectField4, examIdField3,
+                contentField, choice1Field, choice2Field, choice3Field, choice4Field, choice5Field, correctAnswerField);
     }
 
     @FXML
     void onAddQuestionTabSelection(Event event) {
-
+        if(addQuestionTab.isSelected()){
+            new AddQuestion().resetTabView(selectSubjectField4, examIdField3, contentField, choice1Field, choice2Field,
+                    choice3Field, choice4Field, choice5Field, correctAnswerField);
+        }
     }
 
     @FXML
@@ -221,12 +206,18 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
     @FXML
     void onCurrentQuestionButtonAction(ActionEvent event) {
-
+        alert = new Alert(Alert.AlertType.ERROR);
+        new UpdateQuestion().setQuestionData(event, alert, questionController, questionIdField, this.username.toString(),
+                contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
+                correctAnswerField1, updateQuestionButton);
     }
 
     @FXML
     void onCurrentQuestionIDFieldKeyPress(KeyEvent event){
-
+        new UpdateQuestion().clearUpdateElements(contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1,
+                choice5Field1, correctAnswerField1);
+        new UpdateQuestion().setUpdateElementsStatus(contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
+                correctAnswerField1, updateQuestionButton, true);
     }
 
     @FXML
@@ -237,7 +228,8 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
     @FXML
     void onDeleteQuestionButtonAction(ActionEvent event) {
-
+        alert = new Alert(Alert.AlertType.ERROR);
+        new DeleteQuestion().delete(event, alert, questionController, questionIdField1, this.username.toString());
     }
 
     @FXML
@@ -284,7 +276,10 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
     @FXML
     void onUpdateQuestionButtonAction(ActionEvent event) {
-
+        alert = new Alert(Alert.AlertType.ERROR);
+        new UpdateQuestion().update(event, alert, questionController, questionIdField, this.username.toString(),
+                contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
+                correctAnswerField1);
     }
 
     @FXML
