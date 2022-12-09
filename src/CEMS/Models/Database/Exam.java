@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Exam extends ModelUtility {
 
@@ -92,6 +93,18 @@ public class Exam extends ModelUtility {
         }
 
         return isBelongs;
+    }
+
+    public List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode){
+
+        List<Enum> fields = Arrays.asList(Column.Name, Column.Duration);
+
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
+                Table.Exam)
+                .where(Column.SubjectCode, "=", subjectCode)
+                .build();
+
+        return super.getList(fields, this.selectQuery);
     }
 
 }

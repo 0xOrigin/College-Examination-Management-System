@@ -219,5 +219,8 @@ public class AdminDashboardViewController extends Utilities implements Controlle
         columnField.getSelectionModel().selectFirst();
 
         initializeListSearchTable();
+
+        tabPane.getTabs().setAll(addUserTab, updateUserTab, deleteUserTab, listSearchUsersTab, addSubjectTab,
+                deleteSubjectTab, assignSubjectTab);
     }
 }

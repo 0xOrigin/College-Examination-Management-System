@@ -67,7 +67,7 @@ public class LoginViewController extends Utilities {
         String username = usernameField.getText().trim();
         String name = loginController.getUserInfo(username, Column.Name);
 
-        super.changeSceneAndSet(event, userType + "DashboardView.fxml", userType + "Dashboard",
+        super.changeSceneAndSet(event, userType + "DashboardView.fxml", userType + " Dashboard",
                 username, name);
     }
 

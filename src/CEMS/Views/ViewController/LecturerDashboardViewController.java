@@ -389,6 +389,9 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
         initializeDurationField(durationField);
         initializeDurationField(durationField1);
+
+        tabPane.getTabs().setAll(addExamTab, updateExamTab, deleteExamTab, listExamsTab, viewExamTab,
+                addQuestionTab, updateQuestionTab, deleteQuestionTab, showReportTab);
     }
 
 }

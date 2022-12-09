@@ -42,4 +42,9 @@ public class ExamControllerImp implements ExamController {
     public Map<Enum, Object> getExamInfo(String examID, List<Enum> fields){
         return this.dbContext.getExamModel().getInfo(fields, examID);
     }
+
+    @Override
+    public List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode){
+        return this.dbContext.getExamModel().getAllExamsOfSubject(subjectCode);
+    }
 }

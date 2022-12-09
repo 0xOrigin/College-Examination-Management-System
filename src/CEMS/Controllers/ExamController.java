@@ -17,4 +17,6 @@ public interface ExamController {
 
     Map<Enum, Object> getExamInfo(String examID, List<Enum> fields);
 
+    List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode);
+
 }
