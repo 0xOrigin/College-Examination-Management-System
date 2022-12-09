@@ -22,4 +22,9 @@ public class LoginControllerImp implements LoginController {
         return String.valueOf(this.dbContext.getUserModel().getInfo(Arrays.asList(columnName), username).get(columnName));
     }
 
+    @Override
+    public int countOfRegisteredSubjectsFor(String username){
+        return this.dbContext.getUserModel().countOfRegisteredSubjectsFor(username);
+    }
+
 }

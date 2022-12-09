@@ -110,7 +110,7 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
-    public List<Map<Enum, Object>> getAllTestsFor(String username){
+    public List<Map<Enum, Object>> getAllExamsFor(String username){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.SubjectCode, Column.SubjectName, Column.ExamName, Column.Duration);
 
@@ -122,6 +122,35 @@ public class User extends ModelUtility {
                         "JOIN Exam As E ON E.SubjectCode = S.Code;");
 
         return super.getList(fields, this.selectQuery);
+    }
+
+    public int countOfRegisteredSubjectsFor(String username){
+
+        int count = 0;
+
+        List<Enum> fields = Arrays.asList(Column.SubjectsCount);
+
+        this.selectQuery = new SelectBuilder()
+                .freeSQLStatement("SELECT COUNT(S.Code) AS SubjectsCount\n" +
+                        "FROM User AS U\n" +
+                        "JOIN Register As R ON R.UserID = U.ID AND U.Username = '"+ username +"'\n" +
+                        "JOIN Subject AS S ON R.SubjectCode = S.Code;");
+
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+
+        try {
+
+            if(!this.resource.isResultSetEmpty())
+                count = this.resultSet.getInt(1);
+
+        } catch(SQLException ex){
+            ModelExceptionHandler.handle(ex, true);
+        } finally {
+            this.resource.close();
+        }
+
+        return count;
     }
 
 }

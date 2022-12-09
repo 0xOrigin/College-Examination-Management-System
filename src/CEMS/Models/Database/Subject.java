@@ -68,12 +68,12 @@ public class Subject extends ModelUtility {
 
     public List<Map<Enum, Object>> getReportForSubject(String subjectCode){
 
-        List<Enum> fields = Arrays.asList(Column.StudentID, Column.StudentName, Column.SubjectName, Column.ExamID, Column.ExamName, Column.Grade);
+        List<Enum> fields = Arrays.asList(Column.StudentID, Column.StudentName, Column.ExamID, Column.ExamName, Column.Grade);
 
         this.selectQuery = new SelectBuilder()
-                .freeSQLStatement("SELECT U.ID AS StudentID, U.Name AS StudentName, S.Name AS SubjectName, E.ID AS ExamID, E.Name AS ExamName, Grade\n" +
+                .freeSQLStatement("SELECT U.ID AS StudentID, U.Name AS StudentName, E.ID AS ExamID, E.Name AS ExamName, Grade\n" +
                         "From Exam AS E\n" +
-                        "JOIN Subject AS S ON S.Code = 'CS413'\n" +
+                        "JOIN Subject AS S ON E.SubjectCode = S.Code AND S.Code = '" + subjectCode + "'\n" +
                         "JOIN Take AS T ON T.ExamID = E.ID\n" +
                         "JOIN User AS U ON T.UserID = U.ID;");
 

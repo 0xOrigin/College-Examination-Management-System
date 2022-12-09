@@ -113,4 +113,14 @@ public class UserControllerImp implements UserController {
         return this.dbContext.getUserModel().searchBy(column, "%" + pattern + "%");
     }
 
+    @Override
+    public List<Map<Enum, Object>> getAllRegisteredSubjectsFor(String username){
+        return this.dbContext.getUserModel().getAllRegisteredSubjectsFor(username);
+    }
+
+    @Override
+    public List<Map<Enum, Object>> getAllExamsFor(String username){
+        return this.dbContext.getUserModel().getAllExamsFor(username);
+    }
+
 }

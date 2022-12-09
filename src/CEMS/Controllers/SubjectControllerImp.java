@@ -32,4 +32,9 @@ public class SubjectControllerImp implements SubjectController {
     public void delete(String code){
         this.dbContext.getSubjectModel().delete(code);
     }
+
+    @Override
+    public List<Map<Enum, Object>> getReportForSubject(String subjectCode){
+        return this.dbContext.getSubjectModel().getReportForSubject(subjectCode);
+    }
 }

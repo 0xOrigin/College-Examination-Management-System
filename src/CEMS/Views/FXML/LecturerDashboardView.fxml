@@ -35,33 +35,48 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="230.0" layoutY="70.0" text="Select subject">
+                        <Label layoutX="252.0" layoutY="37.0" text="Select subject">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="230.0" layoutY="99.0" prefHeight="27.0" prefWidth="209.0" />
-                        <Label layoutX="230.0" layoutY="152.0" text="Exam name">
+                        <ComboBox fx:id="selectSubjectField" layoutX="253.0" layoutY="64.0" onAction="#onSelectSubjectFieldChange" prefHeight="27.0" prefWidth="230.0" />
+                        <Label layoutX="251.0" layoutY="184.0" text="Exam name">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="230.0" layoutY="179.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="examNameField" layoutX="251.0" layoutY="211.0" prefHeight="27.0" prefWidth="231.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Spinner layoutX="232.0" layoutY="259.0" prefHeight="27.0" prefWidth="211.0" />
-                        <Label layoutX="230.0" layoutY="230.0" text="Duration">
+                        <Spinner fx:id="durationField" layoutX="251.0" layoutY="281.0" prefHeight="27.0" prefWidth="232.0" />
+                        <Label layoutX="250.0" layoutY="253.0" text="Duration">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <Button layoutX="255.0" layoutY="337.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Add">
+                        <Button fx:id="addExamButton" layoutX="280.0" layoutY="350.0" mnemonicParsing="false" onAction="#onAddExamButtonAction" prefHeight="63.0" prefWidth="171.0" text="Add">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
                         </Button>
+                        <Label layoutX="254.0" layoutY="111.0" text="Subject name">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="subjectNameField" editable="false" layoutX="254.0" layoutY="138.0" prefHeight="27.0" prefWidth="228.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="490.0" layoutY="284.0" text="Min">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -74,12 +89,12 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="61.0" layoutY="162.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="examIdField" layoutX="61.0" layoutY="162.0" onKeyPressed="#onCurrentExamIDFieldKeyPress" prefHeight="27.0" prefWidth="210.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="72.0" layoutY="211.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="Submit">
+                        <Button fx:id="currentExamButton" layoutX="72.0" layoutY="211.0" mnemonicParsing="false" onAction="#onCurrentExamButtonAction" prefHeight="37.0" prefWidth="89.0" text="Submit">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>
@@ -89,7 +104,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="416.0" layoutY="162.0" prefHeight="27.0" prefWidth="212.0">
+                        <TextField fx:id="examNameField1" disable="true" layoutX="416.0" layoutY="162.0" prefHeight="27.0" prefWidth="212.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -99,8 +114,8 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <Spinner layoutX="416.0" layoutY="260.0" prefHeight="27.0" prefWidth="211.0" />
-                        <Button layoutX="437.0" layoutY="339.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Update">
+                        <Spinner fx:id="durationField1" disable="true" layoutX="416.0" layoutY="260.0" prefHeight="27.0" prefWidth="211.0" />
+                        <Button fx:id="updateExamButton" disable="true" layoutX="437.0" layoutY="339.0" mnemonicParsing="false" onAction="#onUpdateExamButtonAction" prefHeight="63.0" prefWidth="171.0" text="Update">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -110,7 +125,12 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="61.0" layoutY="68.0" prefHeight="27.0" prefWidth="209.0" />
+                        <ComboBox fx:id="selectSubjectField1" layoutX="61.0" layoutY="68.0" onAction="#onSelectSubjectField1Action" prefHeight="27.0" prefWidth="209.0" />
+                        <Label layoutX="636.0" layoutY="263.0" text="Min">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
                </content>
             </Tab>
@@ -118,23 +138,23 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="262.0" layoutY="81.0" text="Select subject">
+                        <Label layoutX="262.0" layoutY="105.0" text="Select subject">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="262.0" layoutY="117.0" prefHeight="27.0" prefWidth="209.0" />
-                        <Label layoutX="262.0" layoutY="191.0" text="Exam ID">
+                        <ComboBox fx:id="selectSubjectField2" layoutX="262.0" layoutY="141.0" prefHeight="27.0" prefWidth="209.0" />
+                        <Label layoutX="262.0" layoutY="215.0" text="Exam ID">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="262.0" layoutY="221.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="examIdField1" layoutX="262.0" layoutY="245.0" prefHeight="27.0" prefWidth="210.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="281.0" layoutY="313.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Update">
+                        <Button fx:id="deleteExamButton" layoutX="281.0" layoutY="333.0" mnemonicParsing="false" onAction="#onDeleteExamButtonAction" prefHeight="63.0" prefWidth="171.0" text="Delete">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -142,17 +162,17 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="listExamsTab" text="List exams">
+            <Tab fx:id="listExamsTab" onSelectionChanged="#onListExamsTabSelection" text="List exams">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutY="17.0" prefHeight="434.0" prefWidth="733.0">
+                        <TableView fx:id="tableView" layoutY="17.0" prefHeight="434.0" prefWidth="733.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="ID" />
-                            <TableColumn prefWidth="117.0" text="Subject Code" />
-                              <TableColumn prefWidth="179.0" text="Subject Name" />
-                              <TableColumn prefWidth="202.0" text="Exam Name" />
-                              <TableColumn prefWidth="159.0" text="Duration" />
+                            <TableColumn fx:id="idTableColumn" prefWidth="75.0" text="ID" />
+                            <TableColumn fx:id="subjectCodeTableColumn" prefWidth="117.0" text="Subject Code" />
+                              <TableColumn fx:id="subjectNameTableColumn" prefWidth="179.0" text="Subject Name" />
+                              <TableColumn fx:id="examNameTableColumn" prefWidth="202.0" text="Exam Name" />
+                              <TableColumn fx:id="durationTableColumn" prefWidth="159.0" text="Duration" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -161,7 +181,7 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="viewExamTab" text="View exam">
+            <Tab fx:id="viewExamTab" onSelectionChanged="#onViewExamTabSelection" text="View exam">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -170,128 +190,157 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="67.0" layoutY="41.0" prefHeight="27.0" prefWidth="209.0" />
+                        <ComboBox fx:id="selectSubjectField3" layoutX="67.0" layoutY="41.0" prefHeight="27.0" prefWidth="209.0" />
                         <Label layoutX="298.0" layoutY="14.0" text="Exam ID">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="298.0" layoutY="41.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="examIdField2" layoutX="298.0" layoutY="41.0" prefHeight="27.0" prefWidth="210.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="548.0" layoutY="38.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="89.0" text="View">
+                        <Button fx:id="viewExamButton" layoutX="548.0" layoutY="38.0" mnemonicParsing="false" onAction="#onViewExamButtonAction" prefHeight="27.0" prefWidth="89.0" text="View">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>
                         </Button>
-                        <TableView layoutY="82.0" prefHeight="369.0" prefWidth="733.0">
+                        <TableView fx:id="tableView1" layoutY="133.0" prefHeight="318.0" prefWidth="733.0">
                           <columns>
-                            <TableColumn prefWidth="99.0" text="Question ID" />
-                            <TableColumn prefWidth="136.0" text="Content" />
-                              <TableColumn prefWidth="81.0" text="Choice1" />
-                              <TableColumn prefWidth="84.0" text="Choice2" />
-                              <TableColumn prefWidth="75.0" text="Choice3" />
-                              <TableColumn prefWidth="75.0" text="Choice3" />
-                              <TableColumn prefWidth="70.0" text="Choice4" />
-                              <TableColumn prefWidth="112.0" text="Correct Answer" />
+                            <TableColumn fx:id="questionIdTableColumn" prefWidth="99.0" text="Question ID" />
+                            <TableColumn fx:id="contentTableColumn" prefWidth="136.0" text="Content" />
+                              <TableColumn fx:id="choice1TableColumn" prefWidth="81.0" text="Choice1" />
+                              <TableColumn fx:id="choice2TableColumn" prefWidth="84.0" text="Choice2" />
+                              <TableColumn fx:id="choice3TableColumn" prefWidth="75.0" text="Choice3" />
+                              <TableColumn fx:id="choice4TableColumn" prefWidth="75.0" text="Choice4" />
+                              <TableColumn fx:id="choice5TableColumn" prefWidth="70.0" text="Choice5" />
+                              <TableColumn fx:id="correctAnswerTableColumn" prefWidth="112.0" text="Correct Answer" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
+                        <Label layoutX="67.0" layoutY="71.0" text="Exam Name">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="examNameField2" disable="true" editable="false" layoutX="67.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="298.0" layoutY="71.0" text="Duration">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="showDurationField" disable="true" editable="false" layoutX="298.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="514.0" layoutY="101.0" text="Min">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="addQuestionTab" text="Add question">
+            <Tab fx:id="addQuestionTab" onSelectionChanged="#onAddQuestionTabSelection" text="Add question">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Select subject">
+                        <Label layoutX="497.0" layoutY="12.0" prefHeight="21.0" prefWidth="115.0" text="Select subject">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="14.0" layoutY="45.0" prefHeight="27.0" prefWidth="209.0" />
-                        <Label layoutX="253.0" layoutY="14.0" text="Exam ID">
+                        <ComboBox fx:id="selectSubjectField4" layoutX="496.0" layoutY="41.0" prefHeight="27.0" prefWidth="209.0" />
+                        <Label layoutX="496.0" layoutY="74.0" text="Exam ID">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="253.0" layoutY="45.0" prefHeight="27.0" prefWidth="216.0">
+                        <TextField fx:id="examIdField3" layoutX="496.0" layoutY="103.0" prefHeight="27.0" prefWidth="216.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="81.0" text="Question">
+                        <Label layoutX="14.0" layoutY="11.0" text="Question">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="112.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="contentField" layoutX="14.0" layoutY="42.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="151.0" text="Choice1">
+                        <Label layoutX="14.0" layoutY="81.0" text="Choice1">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="174.0" prefHeight="27.0" prefWidth="457.0">
+                        <TextField fx:id="choice1Field" layoutX="14.0" layoutY="104.0" prefHeight="27.0" prefWidth="457.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="211.0" text="Choice2">
+                        <Label layoutX="14.0" layoutY="141.0" text="Choice2">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="234.0" prefHeight="27.0" prefWidth="457.0">
+                        <TextField fx:id="choice2Field" layoutX="14.0" layoutY="164.0" prefHeight="27.0" prefWidth="457.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="269.0" text="Choice3">
+                        <Label layoutX="14.0" layoutY="199.0" text="Choice3">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="292.0" prefHeight="27.0" prefWidth="457.0">
+                        <TextField fx:id="choice3Field" layoutX="14.0" layoutY="222.0" prefHeight="27.0" prefWidth="457.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="328.0" text="Choice4">
+                        <Label layoutX="14.0" layoutY="258.0" text="Choice4">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="351.0" prefHeight="27.0" prefWidth="457.0">
+                        <TextField fx:id="choice4Field" layoutX="14.0" layoutY="281.0" prefHeight="27.0" prefWidth="457.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="385.0" text="Choice5">
+                        <Label layoutX="14.0" layoutY="315.0" text="Choice5">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="408.0" prefHeight="27.0" prefWidth="457.0">
+                        <TextField fx:id="choice5Field" layoutX="14.0" layoutY="338.0" prefHeight="27.0" prefWidth="457.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="499.0" layoutY="14.0" text="Correct Answer">
+                        <Label layoutX="14.0" layoutY="373.0" text="Correct Answer">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="499.0" layoutY="45.0" prefHeight="27.0" prefWidth="209.0" />
-                        <Button layoutX="518.0" layoutY="373.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Add">
+                        <TextField fx:id="correctAnswerField" layoutX="14.0" layoutY="396.0" prefHeight="27.0" prefWidth="457.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="addQuestionButton" layoutX="518.0" layoutY="373.0" mnemonicParsing="false" onAction="#onAddQuestionButtonAction" prefHeight="63.0" prefWidth="171.0" text="Add">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -303,88 +352,92 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Question ID">
+                        <Label layoutX="189.0" layoutY="7.0" text="Question ID">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="38.0" prefHeight="27.0" prefWidth="216.0">
+                        <TextField fx:id="questionIdField" layoutX="189.0" layoutY="31.0" onKeyPressed="#onCurrentQuestionIDFieldKeyPress" prefHeight="27.0" prefWidth="216.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="247.0" layoutY="37.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="100.0" text="Submit">
+                        <Button fx:id="currentQuestionButton" layoutX="422.0" layoutY="30.0" mnemonicParsing="false" onAction="#onCurrentQuestionButtonAction" prefHeight="27.0" prefWidth="100.0" text="Submit">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>
                         </Button>
-                        <Label layoutX="14.0" layoutY="80.0" text="Question">
+                        <Label layoutX="9.0" layoutY="60.0" text="Question">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="106.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="contentField1" layoutX="9.0" layoutY="86.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="144.0" text="Choice1">
+                        <Label layoutX="9.0" layoutY="118.0" text="Choice1">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="169.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice1Field1" layoutX="9.0" layoutY="143.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="202.0" text="Choice2">
+                        <Label layoutX="9.0" layoutY="174.0" text="Choice2">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="226.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice2Field1" layoutX="9.0" layoutY="198.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="258.0" text="Choice3">
+                        <Label layoutX="9.0" layoutY="229.0" text="Choice3">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="282.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice3Field1" layoutX="9.0" layoutY="253.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="315.0" text="Choice4">
+                        <Label layoutX="9.0" layoutY="283.0" text="Choice4">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="339.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice4Field1" layoutX="9.0" layoutY="307.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="14.0" layoutY="374.0" text="Choice5">
+                        <Label layoutX="9.0" layoutY="337.0" text="Choice5">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="14.0" layoutY="399.0" prefHeight="27.0" prefWidth="456.0">
+                        <TextField fx:id="choice5Field1" layoutX="9.0" layoutY="362.0" prefHeight="27.0" prefWidth="456.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Label layoutX="503.0" layoutY="80.0" text="Correct Answer">
+                        <Label layoutX="9.0" layoutY="392.0" text="Correct Answer">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="503.0" layoutY="105.0" prefHeight="27.0" prefWidth="209.0" />
-                        <Button layoutX="522.0" layoutY="366.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Update">
+                        <TextField fx:id="correctAnswerField1" layoutX="9.0" layoutY="415.0" prefHeight="27.0" prefWidth="456.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="updateQuestionButton" layoutX="519.0" layoutY="379.0" mnemonicParsing="false" onAction="#onUpdateQuestionButtonAction" prefHeight="63.0" prefWidth="171.0" text="Update">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -401,12 +454,12 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="247.0" layoutY="184.0" prefHeight="34.0" prefWidth="240.0">
+                        <TextField fx:id="questionIdField1" layoutX="247.0" layoutY="184.0" prefHeight="34.0" prefWidth="240.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="281.0" layoutY="320.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="171.0" text="Delete">
+                        <Button fx:id="deleteQuestionButton" layoutX="281.0" layoutY="320.0" mnemonicParsing="false" onAction="#onDeleteQuestionButtonAction" prefHeight="63.0" prefWidth="171.0" text="Delete">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -414,35 +467,43 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="showReportTab" text="Show report">
+            <Tab fx:id="showReportTab" onSelectionChanged="#onShowReportTabSelection" text="Show report">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="124.0" layoutY="13.0" text="Select subject">
+                        <Label layoutX="14.0" layoutY="12.0" text="Select subject">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="124.0" layoutY="40.0" prefHeight="27.0" prefWidth="228.0" />
-                        <Button layoutX="382.0" layoutY="39.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="194.0" text="Show Report">
+                        <ComboBox fx:id="selectSubjectField5" layoutX="14.0" layoutY="39.0" onAction="#onSelectSubjectField5Action" prefHeight="27.0" prefWidth="228.0" />
+                        <Button fx:id="showReportButton" layoutX="516.0" layoutY="38.0" mnemonicParsing="false" onAction="#onShowReportButtonAction" prefHeight="30.0" prefWidth="194.0" text="Show Report">
                            <font>
                               <Font name="Arial" size="16.0" />
                            </font>
                         </Button>
-                        <TableView layoutY="82.0" prefHeight="368.0" prefWidth="733.0">
+                        <TableView fx:id="tableView2" layoutY="82.0" prefHeight="368.0" prefWidth="733.0">
                           <columns>
-                            <TableColumn prefWidth="96.0" text="Student ID" />
-                            <TableColumn prefWidth="141.0" text="Student Name" />
-                              <TableColumn prefWidth="105.0" text="Subject Code" />
-                              <TableColumn prefWidth="117.0" text="Subject Name" />
-                              <TableColumn prefWidth="75.0" text="Exam ID" />
-                              <TableColumn prefWidth="112.0" text="Exam Name" />
-                              <TableColumn prefWidth="75.0" text="Grade" />
+                            <TableColumn fx:id="studentIdTableColumn" prefWidth="106.0" text="Student ID" />
+                            <TableColumn fx:id="studentNameTableColumn" prefWidth="186.0" text="Student Name" />
+                              <TableColumn fx:id="examIdTableColumn" prefWidth="75.0" text="Exam ID" />
+                              <TableColumn fx:id="examNameTableColumn1" prefWidth="112.0" text="Exam Name" />
+                              <TableColumn fx:id="gradeTableColumn" prefWidth="75.0" text="Grade" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
+                        <Label layoutX="256.0" layoutY="12.0" text="Subject name">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="subjectNameField1" editable="false" layoutX="256.0" layoutY="39.0" prefHeight="27.0" prefWidth="240.0">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
                      </children></AnchorPane>
                </content>
             </Tab>

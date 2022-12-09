@@ -26,6 +26,8 @@ public enum Column {
     SubjectName,
     ExamName,
     StudentID,
-    StudentName;
+    StudentName,
+    SubjectsCount,
+    QuestionID;
 
 }

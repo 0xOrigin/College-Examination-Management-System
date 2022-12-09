@@ -33,4 +33,8 @@ public interface UserController {
 
     void delete(String username);
 
+    List<Map<Enum, Object>> getAllRegisteredSubjectsFor(String username);
+
+    List<Map<Enum, Object>> getAllExamsFor(String username);
+
 }

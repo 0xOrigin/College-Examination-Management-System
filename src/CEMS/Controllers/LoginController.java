@@ -6,4 +6,6 @@ public interface LoginController {
 
     String getUserInfo(String username, Enum columnName);
 
+    int countOfRegisteredSubjectsFor(String username);
+
 }

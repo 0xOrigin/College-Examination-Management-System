@@ -178,7 +178,21 @@ public class AdminDashboardViewController extends Utilities implements Controlle
 
     @FXML
     void onListSearchTabSelection(Event event) {
-        new ListAndSearchUsers().resetTabView(operationField, tableView, searchField, columnField, searchButton);
+        if(listSearchUsersTab.isSelected())
+            new ListAndSearchUsers().resetTabView(operationField, tableView, searchField, columnField, searchButton);
+    }
+
+    void initializeListSearchTable(){
+        idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
+        nameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Name));
+        emailTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Email));
+        genderTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Gender));
+        usernameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Username));
+        passwordTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Password));
+        typeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Type));
+
+        tableView.getColumns().setAll(Arrays.asList(idTableColumn, nameTableColumn, emailTableColumn,
+                genderTableColumn, usernameTableColumn, passwordTableColumn, typeTableColumn));
     }
 
     @Override
@@ -204,15 +218,6 @@ public class AdminDashboardViewController extends Utilities implements Controlle
                 Column.Username, Column.Password, Column.Type));
         columnField.getSelectionModel().selectFirst();
 
-        idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
-        nameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Name));
-        emailTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Email));
-        genderTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Gender));
-        usernameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Username));
-        passwordTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Password));
-        typeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Type));
-
-        tableView.getColumns().setAll(Arrays.asList(idTableColumn, nameTableColumn, emailTableColumn,
-                genderTableColumn, usernameTableColumn, passwordTableColumn, typeTableColumn));
+        initializeListSearchTable();
     }
 }

@@ -13,4 +13,6 @@ public interface SubjectController {
 
     Map<Enum, Object> getSubjectInfo(String code, List<Enum> fields);
 
+    List<Map<Enum, Object>> getReportForSubject(String subjectCode);
+
 }
