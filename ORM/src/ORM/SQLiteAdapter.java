@@ -34,7 +34,7 @@ public class SQLiteAdapter extends DML implements Adapter {
         if(checkEquality(fields.size(), values.size())){
         
             String query = "INSERT INTO " + this.table.name() + " (" + fields.toString().replaceAll("[\\[\\]]", "") + ")" +
-                           " VALUES "  + "(" + processValues(values) + ")";
+                           " VALUES "  + "(" + processValues(values) + ");";
             
             QueryExecutor.execute(query, getImagesPaths(values));
         }
@@ -51,7 +51,7 @@ public class SQLiteAdapter extends DML implements Adapter {
             for(int index = 0; index < fields.size(); index++)
                 query = query.concat(" " + fields.get(index).name() + "=" + processValues(Arrays.asList(values.get(index))) + ",");
 
-            query = query.substring(0, query.length()-1).concat(" WHERE " + where);
+            query = query.substring(0, query.length()-1).concat(" WHERE " + where).concat(";");
 
             QueryExecutor.execute(query, getImagesPaths(values));
         }
@@ -61,7 +61,7 @@ public class SQLiteAdapter extends DML implements Adapter {
     @Override
     public void delete(String where){
         
-        String query = "DELETE FROM " + this.table.name() + " WHERE " + where;
+        String query = "DELETE FROM " + this.table.name() + " WHERE " + where + ";";
         
         QueryExecutor.execute(query, new LinkedList<>());
     }

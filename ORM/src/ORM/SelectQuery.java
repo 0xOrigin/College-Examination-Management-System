@@ -35,7 +35,8 @@ public class SelectQuery {
                 (!this.where.isBlank() ? " WHERE ( " + this.where + " ) " : "") +
                 (!this.like.isBlank() ? " LIKE '" + this.like + "'" : "") +
                 (!this.orderBy.isBlank() ? " ORDER BY " + this.orderBy : "") +
-                (!this.limit.isBlank() ? " LIMIT " + this.limit : "");   
+                (!this.limit.isBlank() ? " LIMIT " + this.limit : "") +
+                ";";
     }
     
 }
