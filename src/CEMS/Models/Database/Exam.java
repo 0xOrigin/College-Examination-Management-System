@@ -97,7 +97,7 @@ public class Exam extends ModelUtility {
 
     public List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode){
 
-        List<Enum> fields = Arrays.asList(Column.Name, Column.Duration);
+        List<Enum> fields = Arrays.asList(Column.ID, Column.Name, Column.Duration);
 
         this.selectQuery = new SelectBuilder(Arrays.asList(fields),
                 Table.Exam)
