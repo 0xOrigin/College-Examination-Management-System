@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController;
+package CEMS.Views.ViewControllers;
 
 import CEMS.Controllers.ExamController;
 import CEMS.Controllers.ExamControllerImp;
@@ -15,7 +15,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 public class StudentDashboardViewController extends Utilities implements Controller, Initializable {
 

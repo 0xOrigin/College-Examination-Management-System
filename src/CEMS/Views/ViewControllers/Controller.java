@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController;
+package CEMS.Views.ViewControllers;
 
 public interface Controller {
 

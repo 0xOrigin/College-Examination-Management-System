@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController.Validators;
+package CEMS.Views.ViewControllers.Validators;
 
 import CEMS.Controllers.UserController;
 import CEMS.Models.Enum.Column;

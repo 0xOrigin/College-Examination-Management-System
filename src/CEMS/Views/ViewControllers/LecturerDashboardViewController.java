@@ -1,10 +1,10 @@
-package CEMS.Views.ViewController;
+package CEMS.Views.ViewControllers;
 
 import CEMS.Controllers.*;
 import CEMS.Models.CEMS_DbContext;
 import CEMS.Models.Enum.Column;
 import CEMS.Views.Utilities;
-import CEMS.Views.ViewController.Tabs.*;
+import CEMS.Views.ViewControllers.Tabs.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;

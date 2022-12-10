@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController.Tabs;
+package CEMS.Views.ViewControllers.Tabs;
 
 import CEMS.Controllers.UserController;
 import CEMS.Views.Utilities;

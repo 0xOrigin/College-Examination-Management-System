@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="538.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.Views.ViewController.AdminDashboardViewController">
+<AnchorPane fx:id="anchorPane" prefHeight="538.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.Views.ViewControllers.AdminDashboardViewController">
    <children>
       <Button fx:id="logoutButton" layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutButtonAction" prefHeight="13.0" prefWidth="92.0" text="Logout">
          <font>

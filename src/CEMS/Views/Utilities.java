@@ -1,6 +1,6 @@
 package CEMS.Views;
 
-import CEMS.Views.ViewController.Controller;
+import CEMS.Views.ViewControllers.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;

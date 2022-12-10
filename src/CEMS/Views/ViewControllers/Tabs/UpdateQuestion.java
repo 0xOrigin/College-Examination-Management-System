@@ -1,9 +1,9 @@
-package CEMS.Views.ViewController.Tabs;
+package CEMS.Views.ViewControllers.Tabs;
 
 import CEMS.Controllers.QuestionController;
 import CEMS.Models.Enum.Column;
 import CEMS.Views.Utilities;
-import CEMS.Views.ViewController.Validators.QuestionValidator;
+import CEMS.Views.ViewControllers.Validators.QuestionValidator;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import java.util.Arrays;

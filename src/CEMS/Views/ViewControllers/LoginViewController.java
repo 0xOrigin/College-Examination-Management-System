@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController;
+package CEMS.Views.ViewControllers;
 
 import CEMS.Controllers.LoginController;
 import CEMS.Controllers.LoginControllerImp;

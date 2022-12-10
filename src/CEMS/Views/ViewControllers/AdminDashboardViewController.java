@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController;
+package CEMS.Views.ViewControllers;
 
 import CEMS.Controllers.SubjectController;
 import CEMS.Controllers.SubjectControllerImp;
@@ -9,7 +9,7 @@ import CEMS.Models.Enum.Column;
 import CEMS.Models.Enum.Gender;
 import CEMS.Models.Enum.Type;
 import CEMS.Views.Utilities;
-import CEMS.Views.ViewController.Tabs.*;
+import CEMS.Views.ViewControllers.Tabs.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
