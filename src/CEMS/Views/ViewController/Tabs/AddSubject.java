@@ -2,7 +2,7 @@ package CEMS.Views.ViewController.Tabs;
 
 import CEMS.Controllers.SubjectController;
 import CEMS.Views.Utilities;
-import CEMS.Views.ViewController.Validator.SubjectValidator;
+import CEMS.Views.ViewController.Validators.SubjectValidator;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;

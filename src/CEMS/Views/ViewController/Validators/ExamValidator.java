@@ -1,4 +1,4 @@
-package CEMS.Views.ViewController.Validator;
+package CEMS.Views.ViewController.Validators;
 
 import CEMS.Controllers.ExamController;
 import CEMS.Views.Utilities;
