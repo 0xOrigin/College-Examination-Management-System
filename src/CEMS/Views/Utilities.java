@@ -40,7 +40,7 @@ public class Utilities {
     }
 
     private FXMLLoader getLoader(String fxmlFile){
-        return new FXMLLoader(getClass().getResource("../FXML/" + fxmlFile));
+        return new FXMLLoader(Utilities.class.getResource("FXML/" + fxmlFile));
     }
 
     private Parent getParent(FXMLLoader loader){
