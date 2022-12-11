@@ -2,17 +2,22 @@ package CEMS.Views.ViewControllers.Tabs;
 
 import CEMS.Controllers.UserController;
 import CEMS.Views.Utilities;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 
 import java.util.List;
 import java.util.Map;
 
 public class ListAndSearchUsers extends Utilities {
 
-    public void search(UserController controller, TableView<Map> tableView, TextField searchField, ComboBox<Enum> columnField){
+    public void search(ActionEvent event, Alert alert, UserController controller, TableView<Map> tableView,
+                       TextField searchField, ComboBox<Enum> columnField){
+
+        if(searchField.getText().isBlank()){
+            super.setAlertOwner(event, alert);
+            handleAlert(alert, "Search field", "Search field is required and cannot be blank!", Alert.AlertType.ERROR);
+            return;
+        }
         clearTableView(tableView);
         List<Map<Enum, Object>> users = controller.searchBy(columnField.getValue(), searchField.getText().trim());
         for(Map<Enum, Object> user : users){

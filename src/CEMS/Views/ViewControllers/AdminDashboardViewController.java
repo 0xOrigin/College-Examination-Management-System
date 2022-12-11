@@ -173,7 +173,8 @@ public class AdminDashboardViewController extends Utilities implements Controlle
 
     @FXML
     void onSearchButtonAction(ActionEvent event) {
-        new ListAndSearchUsers().search(userController, tableView, searchField, columnField);
+        alert = new Alert(Alert.AlertType.ERROR);
+        new ListAndSearchUsers().search(event, alert, userController, tableView, searchField, columnField);
     }
 
     @FXML
