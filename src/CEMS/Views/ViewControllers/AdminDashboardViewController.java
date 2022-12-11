@@ -108,6 +108,16 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     private TableColumn<Map, Enum> typeTableColumn;
     @FXML
     private TableColumn<Map, Enum> usernameTableColumn;
+    @FXML
+    private Tab listSubjectsTab;
+    @FXML
+    private TableView<Map> tableView1;
+    @FXML
+    private TableColumn<Map, Enum> descriptionTableColumn;
+    @FXML
+    private TableColumn<Map, Enum> codeTableColumn;
+    @FXML
+    private TableColumn<Map, Enum> nameTableColumn1;
 
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
@@ -183,6 +193,22 @@ public class AdminDashboardViewController extends Utilities implements Controlle
             new ListAndSearchUsers().resetTabView(operationField, tableView, searchField, columnField, searchButton);
     }
 
+    @FXML
+    void onListSubjectsTabSelection(Event event) {
+        if(listSubjectsTab.isSelected()){
+            new ListSubjects().clearTableView(tableView1);
+            new ListSubjects().list(subjectController, tableView1);
+        }
+    }
+
+    void initializeListSubjectsTable(){
+        codeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Code));
+        nameTableColumn1.setCellValueFactory(new MapValueFactory<>(Column.Name));
+        descriptionTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Description));
+
+        tableView1.getColumns().setAll(Arrays.asList(codeTableColumn, nameTableColumn1, descriptionTableColumn));
+    }
+
     void initializeListSearchTable(){
         idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
         nameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Name));
@@ -220,8 +246,9 @@ public class AdminDashboardViewController extends Utilities implements Controlle
         columnField.getSelectionModel().selectFirst();
 
         initializeListSearchTable();
+        initializeListSubjectsTable();
 
         tabPane.getTabs().setAll(addUserTab, updateUserTab, deleteUserTab, listSearchUsersTab, addSubjectTab,
-                deleteSubjectTab, assignSubjectTab);
+                listSubjectsTab, deleteSubjectTab, assignSubjectTab);
     }
 }

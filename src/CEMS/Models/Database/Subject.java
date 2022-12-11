@@ -80,4 +80,15 @@ public class Subject extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    public List<Map<Enum, Object>> getAllSubjects(){
+
+        List<Enum> fields = Arrays.asList(Column.Code, Column.Name, Column.Description);
+
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
+                Table.Subject)
+                .build();
+
+        return super.getList(fields, this.selectQuery);
+    }
+
 }

@@ -37,4 +37,9 @@ public class SubjectControllerImp implements SubjectController {
     public List<Map<Enum, Object>> getReportForSubject(String subjectCode){
         return this.dbContext.getSubjectModel().getReportForSubject(subjectCode);
     }
+
+    @Override
+    public List<Map<Enum, Object>> getAllSubjects(){
+        return this.dbContext.getSubjectModel().getAllSubjects();
+    }
 }

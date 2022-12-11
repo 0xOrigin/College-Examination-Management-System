@@ -15,4 +15,6 @@ public interface SubjectController {
 
     List<Map<Enum, Object>> getReportForSubject(String subjectCode);
 
+    List<Map<Enum, Object>> getAllSubjects();
+
 }
