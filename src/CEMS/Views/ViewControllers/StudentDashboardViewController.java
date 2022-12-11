@@ -1,29 +1,30 @@
 package CEMS.Views.ViewControllers;
 
-import CEMS.Controllers.ExamController;
-import CEMS.Controllers.ExamControllerImp;
-import CEMS.Controllers.UserController;
-import CEMS.Controllers.UserControllerImp;
+import CEMS.Controllers.*;
 import CEMS.Models.CEMS_DbContext;
 import CEMS.Models.Enum.Column;
 import CEMS.Views.Utilities;
+import CEMS.Views.ViewControllers.Tabs.Exam;
+import CEMS.Views.ViewControllers.Tabs.Result;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class StudentDashboardViewController extends Utilities implements Controller, Initializable {
 
     String name;
     StringBuilder username;
+    String studentID;
     UserController userController = new UserControllerImp(new CEMS_DbContext());
     ExamController examController = new ExamControllerImp(new CEMS_DbContext());
+    QuestionController questionController = new QuestionControllerImp(new CEMS_DbContext());
     List<Map<Enum, Object>> subjects;
     List<Map<Enum, Object>> selectedSubjectExams;
+    Exam exam;
+    Result result;
     private Alert alert;
     @FXML
     private Label nameLabel;
@@ -40,6 +41,8 @@ public class StudentDashboardViewController extends Utilities implements Control
     @FXML
     private TextField subjectNameField;
     @FXML
+    private Label subjectNameLabel;
+    @FXML
     private TabPane tabPane;
     @FXML
     private Tab examTab;
@@ -47,6 +50,38 @@ public class StudentDashboardViewController extends Utilities implements Control
     private Tab resultTab;
     @FXML
     private Tab selectExamTab;
+    @FXML
+    private Label timerLabel;
+    @FXML
+    private Label examNameLabel;
+    @FXML
+    private Label examNameLabel1;
+    @FXML
+    private Label currentQuestionNumLabel;
+    @FXML
+    private Label totalQuestionsNumLabel;
+    @FXML
+    private ToggleGroup Answers;
+    @FXML
+    private RadioButton choice1Button;
+    @FXML
+    private RadioButton choice2Button;
+    @FXML
+    private RadioButton choice3Button;
+    @FXML
+    private RadioButton choice4Button;
+    @FXML
+    private RadioButton choice5Button;
+    @FXML
+    private Button nextSubmitButton;
+    @FXML
+    private Button prevButton;
+    @FXML
+    private Label questionLabel;
+    @FXML
+    private Label gradeLabel;
+    @FXML
+    private TextArea correctedExamField;
 
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
@@ -56,10 +91,7 @@ public class StudentDashboardViewController extends Utilities implements Control
     @FXML
     void onSelectSubjectFieldChange(ActionEvent event) {
         updateSubjectNameField(selectSubjectField, subjectNameField, subjects);
-
-        String selectedSubjectCode = selectSubjectField.getSelectionModel().getSelectedItem();
-        selectedSubjectExams = examController.getAllExamsOfSubject(selectedSubjectCode);
-        initializeSelectExamField(selectExamField, selectedSubjectExams);
+        updateSelectExamField(selectExamField);
     }
 
     @FXML
@@ -69,9 +101,59 @@ public class StudentDashboardViewController extends Utilities implements Control
 
     @FXML
     void onStartExamButtonAction(ActionEvent event) {
-        examTab.setDisable(false);
-        tabPane.getSelectionModel().select(examTab);
-        selectExamTab.setDisable(true);
+        alert = new Alert(Alert.AlertType.ERROR);
+
+        String examID = getExamID(selectedSubjectExams, selectExamField);
+
+        if(checkIfExamAvailability(event, alert, examID)){
+            exam = new Exam(studentID, examID, selectExamField, examNameLabel, totalQuestionsNumLabel, examController, questionController);
+
+            exam.setExamTabAttributes(questionLabel, Answers, choice1Button, choice2Button, choice3Button, choice4Button,
+                    choice5Button, prevButton, nextSubmitButton);
+
+            if(exam.start(event, alert, showDurationField, timerLabel, currentQuestionNumLabel))
+                transitToTab(tabPane, selectExamTab, examTab);
+        }
+    }
+
+    String getExamID(List<Map<Enum, Object>> selectedSubjectExams, ComboBox<String> selectExamField){
+        return selectedSubjectExams.get(selectExamField.getSelectionModel().getSelectedIndex()).get(Column.ID).toString();
+    }
+
+    boolean checkIfExamAvailability(ActionEvent event, Alert alert, String examID){
+        super.setAlertOwner(event, alert);
+        if(examController.isTaken(studentID, examID)){
+            handleAlert(alert, "Taken exam",
+                    "You cannot take the exam again!",
+                    Alert.AlertType.ERROR);
+            return false;
+        }
+        return true;
+    }
+
+    void transitToTab(TabPane tabPane, Tab currentTab, Tab destinationTab){
+        destinationTab.setDisable(false);
+        tabPane.getSelectionModel().select(destinationTab);
+        currentTab.setDisable(true);
+    }
+
+    @FXML
+    void onNextSubmitButtonAction(ActionEvent event) {
+        boolean isSubmitAvailable = exam.isSubmitUnlocked();
+        exam.incrementCurrentQuestionNum(currentQuestionNumLabel);
+        if(isSubmitAvailable) {
+            exam.stopTimer();
+            result = new Result(studentID, exam, examController,
+                    subjectNameLabel, examNameLabel1, gradeLabel);
+            result.setResultData(subjectNameField, selectExamField, correctedExamField);
+            result.correctExam();
+            transitToTab(tabPane, examTab, resultTab);
+        }
+    }
+
+    @FXML
+    void onPrevButtonAction(ActionEvent event) {
+        exam.decrementCurrentQuestionNum(currentQuestionNumLabel);
     }
 
     void setStartExamButtonState(Button startExamButton, boolean disable){
@@ -89,6 +171,12 @@ public class StudentDashboardViewController extends Utilities implements Control
         } else {
             showDurationField.clear();
         }
+    }
+
+    void updateSelectExamField(ComboBox<String> selectExamField){
+        String selectedSubjectCode = selectSubjectField.getSelectionModel().getSelectedItem();
+        selectedSubjectExams = examController.getAllExamsOfSubject(selectedSubjectCode);
+        initializeSelectExamField(selectExamField, selectedSubjectExams);
     }
 
     void initializeSelectExamField(ComboBox<String> selectExamField, List<Map<Enum, Object>> exams){
@@ -113,6 +201,10 @@ public class StudentDashboardViewController extends Utilities implements Control
         subjectField.getSelectionModel().selectFirst();
     }
 
+    String getUserID(String username){
+        return userController.getUserInfo(username, Arrays.asList(Column.ID)).get(Column.ID).toString();
+    }
+
     @Override
     public void setNameOfUser(String name) {
         this.name = name;
@@ -123,6 +215,7 @@ public class StudentDashboardViewController extends Utilities implements Control
     public void setUsername(StringBuilder username) {
         this.username = username;
 
+        this.studentID = getUserID(this.username.toString());
         initializeSelectionFields(this.username.toString());
     }
 
@@ -132,9 +225,7 @@ public class StudentDashboardViewController extends Utilities implements Control
         initializeSelectSubjectField(selectSubjectField, subjects);
         updateSubjectNameField(selectSubjectField, subjectNameField, subjects);
 
-        String selectedSubjectCode = selectSubjectField.getSelectionModel().getSelectedItem();
-        selectedSubjectExams = examController.getAllExamsOfSubject(selectedSubjectCode);
-        initializeSelectExamField(selectExamField, selectedSubjectExams);
+        updateSelectExamField(selectExamField);
         updateExamDurationField(selectExamField, showDurationField, selectedSubjectExams);
     }
 

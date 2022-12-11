@@ -3,17 +3,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.Views.ViewControllers.StudentDashboardViewController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CEMS.Views.ViewControllers.StudentDashboardViewController">
    <children>
-      <Button fx:id="logoutButton" layoutX="627.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutButtonAction" prefHeight="13.0" prefWidth="92.0" text="Logout">
+      <Button fx:id="logoutButton" layoutX="651.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutButtonAction" prefHeight="13.0" prefWidth="92.0" text="Logout">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -28,7 +31,7 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <TabPane fx:id="tabPane" layoutY="57.0" prefHeight="480.0" prefWidth="733.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" layoutY="57.0" prefHeight="525.0" prefWidth="757.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="selectExamTab" text="Select exam">
               <content>
@@ -71,7 +74,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <Button fx:id="startExamButton" disable="true" layoutX="281.0" layoutY="350.0" mnemonicParsing="false" onAction="#onStartExamButtonAction" prefHeight="63.0" prefWidth="171.0" text="Start">
+                        <Button fx:id="startExamButton" disable="true" layoutX="281.0" layoutY="357.0" mnemonicParsing="false" onAction="#onStartExamButtonAction" prefHeight="63.0" prefWidth="171.0" text="Start">
                            <font>
                               <Font name="Arial Bold" size="22.0" />
                            </font>
@@ -79,7 +82,7 @@
                               <Tooltip fx:id="startButtonTooltip" text="Empty Tooltip" />
                            </tooltip>
                         </Button>
-                        <Label fx:id="errorLabel" layoutX="185.0" layoutY="306.0" text="There are no exams available for this subject!" textFill="RED">
+                        <Label fx:id="errorLabel" layoutX="185.0" layoutY="307.0" text="There are no exams available for this subject!" textFill="RED">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
@@ -90,12 +93,137 @@
             </Tab>
             <Tab fx:id="examTab" disable="true" text="Exam">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="485.0" layoutY="15.0" text="Remaining time: ">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="timerLabel" alignment="CENTER" layoutX="641.0" layoutY="15.0" prefHeight="24.0" prefWidth="100.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="14.0" text="Exam name:">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="examNameLabel" layoutX="136.0" layoutY="16.0">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutY="48.0" prefHeight="13.0" prefWidth="757.0" />
+                        <Label layoutX="197.0" layoutY="68.0" text="Question">
+                           <font>
+                              <Font name="DejaVu Sans Mono Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="currentQuestionNumLabel" alignment="CENTER" layoutX="303.0" layoutY="69.0" prefHeight="26.0" prefWidth="51.0">
+                           <font>
+                              <Font name="Calibri" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="361.0" layoutY="68.0" text="out of">
+                           <font>
+                              <Font name="DejaVu Sans Mono Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="totalQuestionsNumLabel" alignment="CENTER" layoutX="447.0" layoutY="69.0" prefHeight="26.0" prefWidth="48.0">
+                           <font>
+                              <Font name="Calibri" size="22.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="nextSubmitButton" layoutX="574.0" layoutY="441.0" mnemonicParsing="false" onAction="#onNextSubmitButtonAction" text="Next &gt;&gt;">
+                           <font>
+                              <Font name="Arial" size="21.0" />
+                           </font>
+                        </Button>
+                        <Separator layoutY="102.0" prefHeight="13.0" prefWidth="757.0" />
+                        <RadioButton fx:id="choice1Button" layoutX="19.0" layoutY="191.0" mnemonicParsing="false" wrapText="true">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Answers" />
+                           </toggleGroup>
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Label fx:id="questionLabel" alignment="CENTER" layoutX="19.0" layoutY="117.0" prefHeight="63.0" prefWidth="722.0" wrapText="true">
+                           <font>
+                              <Font name="Times New Roman" size="20.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="choice2Button" layoutX="19.0" layoutY="238.0" mnemonicParsing="false" toggleGroup="$Answers" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="choice3Button" layoutX="19.0" layoutY="286.0" mnemonicParsing="false" toggleGroup="$Answers" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="choice4Button" layoutX="19.0" layoutY="335.0" mnemonicParsing="false" toggleGroup="$Answers" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="choice5Button" layoutX="19.0" layoutY="384.0" mnemonicParsing="false" toggleGroup="$Answers" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <Button fx:id="prevButton" layoutX="56.0" layoutY="441.0" mnemonicParsing="false" onAction="#onPrevButtonAction" text="&lt;&lt; Prev">
+                           <font>
+                              <Font name="Arial" size="21.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab fx:id="resultTab" disable="true" text="Result">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Subject name:">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="55.0" prefHeight="21.0" prefWidth="115.0" text="Exam name:">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="subjectNameLabel" layoutX="138.0" layoutY="15.0">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="examNameLabel1" layoutX="127.0" layoutY="56.0">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="553.0" layoutY="37.0" text="Your grade:">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="gradeLabel" layoutX="658.0" layoutY="37.0" prefHeight="21.0" prefWidth="51.0">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutY="84.0" prefHeight="13.0" prefWidth="757.0" />
+                        <TextArea fx:id="correctedExamField" editable="false" layoutY="93.0" prefHeight="401.0" prefWidth="757.0">
+                           <font>
+                              <Font name="Times New Roman" size="18.0" />
+                           </font>
+                        </TextArea>
+                     </children></AnchorPane>
               </content>
             </Tab>
          </tabs>

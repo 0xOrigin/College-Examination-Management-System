@@ -19,4 +19,14 @@ public interface ExamController {
 
     List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode);
 
+    boolean isTaken(String studentID, String examID);
+
+    void markExamAsTaken(String studentID, String examID, String grade);
+
+    void markExamAsTaken(String studentID, String examID);
+
+    void storeGradeForExam(String studentID, String examID, String grade);
+
+    String correctExam(List<Map<Enum, Object>> questions, Map<String, String> studentAnswers);
+
 }

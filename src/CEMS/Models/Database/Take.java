@@ -1,11 +1,11 @@
 package CEMS.Models.Database;
 
 import CEMS.Models.Enum.Column;
-import ORM.Adapter;
-import ORM.Resource;
-import ORM.SelectQuery;
-
+import CEMS.Models.Enum.Table;
+import ORM.*;
+import ORM.Utilities.ModelExceptionHandler;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,6 +49,34 @@ public class Take extends ModelUtility {
         this.takeModel.delete(this.takeModel.Where(Column.UserID, "=", userID) +
                 this.takeModel.Operator("and") +
                 this.takeModel.Where(Column.ExamID, "=", examID));
+    }
+
+    public boolean isTaken(String userID, String examID){
+
+        boolean taken = false;
+
+        this.selectQuery = new SelectBuilder(Arrays.asList(this.takeModel.Aggregate("count", "", Column.UserID)),
+                Table.Take)
+                .where(Column.UserID, "=", userID)
+                .operator("and")
+                .where(Column.ExamID, "=", examID)
+                .build();
+
+        this.resultSet = QueryExecutor.executeSelectQuery(this.selectQuery);
+        this.resource = new Resource(this.resultSet);
+
+        try {
+
+            if(!this.resource.isResultSetEmpty())
+                taken = (this.resultSet.getInt(1) == 1);
+
+        } catch(SQLException ex){
+            ModelExceptionHandler.handle(ex, true);
+        } finally {
+            this.resource.close();
+        }
+
+        return taken;
     }
 
 }
