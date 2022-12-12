@@ -8,10 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class Utilities {
 
@@ -68,4 +70,9 @@ public class Utilities {
     protected void setAlertOwner(ActionEvent event, Alert alert){
         alert.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
     }
+
+    protected void clearTableView(TableView<Map> tableView){
+        tableView.getItems().clear();
+    }
+
 }

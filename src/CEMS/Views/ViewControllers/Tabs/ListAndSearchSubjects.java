@@ -28,7 +28,7 @@ public class ListAndSearchSubjects extends Utilities {
     public void list(SubjectController controller, ComboBox<String> operationField, TableView<Map> tableView,
                      TextField searchField, ComboBox<Enum> columnField, Button searchButton){
 
-        clearTableView(tableView);
+        super.clearTableView(tableView);
 
         if(operationField.getSelectionModel().getSelectedItem().equals("List")){
             setSearchElementsStatus(searchField, columnField, searchButton, true);
@@ -40,10 +40,6 @@ public class ListAndSearchSubjects extends Utilities {
         else {
             setSearchElementsStatus(searchField, columnField, searchButton, false);
         }
-    }
-
-    public void clearTableView(TableView<Map> tableView){
-        tableView.getItems().clear();
     }
 
     public void setSearchElementsStatus(TextField searchField, ComboBox<Enum> columnField, Button searchButton, boolean disable){
@@ -58,7 +54,7 @@ public class ListAndSearchSubjects extends Utilities {
                              TextField searchField, ComboBox<Enum> columnField, Button searchButton){
 
         searchField.clear();
-        clearTableView(tableView);
+        super.clearTableView(tableView);
         operationField.getSelectionModel().selectFirst();
         setSearchElementsStatus(searchField, columnField, searchButton, false);
     }

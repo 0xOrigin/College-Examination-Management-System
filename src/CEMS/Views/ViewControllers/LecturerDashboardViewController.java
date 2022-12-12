@@ -234,23 +234,19 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
     @FXML
     void onListExamsTabSelection(Event event) {
-        if(listExamsTab.isSelected()){
-            new ListExams().clearTableView(tableView);
+        if(listExamsTab.isSelected())
             new ListExams().list(userController, tableView, this.username.toString());
-        }
     }
 
     @FXML
     void onShowReportButtonAction(ActionEvent event) {
-        new ShowReport().clearTableView(tableView2);
         new ShowReport().show(subjectController, tableView2, selectSubjectField5);
     }
 
     @FXML
     void onShowReportTabSelection(Event event){
-        if(showReportTab.isSelected()){
+        if(showReportTab.isSelected())
             new ShowReport().resetTabView(selectSubjectField5, tableView2);
-        }
     }
 
     @FXML
@@ -285,7 +281,6 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     void onViewExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
-        new ViewExam().clearTableView(tableView1);
         new ViewExam().view(event, alert, examController, questionController, selectSubjectField3, examIdField2, examNameField2,
                 showDurationField, tableView1);
     }

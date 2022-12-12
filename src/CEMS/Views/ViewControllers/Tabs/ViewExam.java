@@ -23,6 +23,7 @@ public class ViewExam extends Utilities {
                      ComboBox<String> selectSubjectField, TextField examIdField, TextField examNameField,
                      TextField showDurationField, TableView<Map> tableView){
 
+        super.clearTableView(tableView);
         super.setAlertOwner(event, alert);
         boolean generalState;
 
@@ -42,14 +43,10 @@ public class ViewExam extends Utilities {
         }
     }
 
-    public void clearTableView(TableView<Map> tableView){
-        tableView.getItems().clear();
-    }
-
     public void resetTabView(ComboBox<String> selectSubjectField, TextField examIdField, TextField examNameField,
                              TextField showDurationField, TableView<Map> tableView){
 
-        clearTableView(tableView);
+        super.clearTableView(tableView);
         selectSubjectField.getSelectionModel().selectFirst();
         examIdField.clear();
         examNameField.clear();

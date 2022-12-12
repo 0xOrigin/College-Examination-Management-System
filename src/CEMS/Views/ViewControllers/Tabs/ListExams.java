@@ -10,13 +10,13 @@ import java.util.Map;
 public class ListExams extends Utilities {
 
     public void list(UserController controller, TableView<Map> tableView, String username){
+
+        super.clearTableView(tableView);
+
         List<Map<Enum, Object>> exams = controller.getAllExamsFor(username);
         for(Map<Enum, Object> exam : exams){
             tableView.getItems().add(exam);
         }
     }
 
-    public void clearTableView(TableView<Map> tableView){
-        tableView.getItems().clear();
-    }
 }
