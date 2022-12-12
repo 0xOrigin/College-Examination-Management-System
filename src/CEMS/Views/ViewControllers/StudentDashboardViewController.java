@@ -81,6 +81,8 @@ public class StudentDashboardViewController extends Utilities implements Control
     @FXML
     private Label gradeLabel;
     @FXML
+    private Label totalMarkLabel;
+    @FXML
     private TextArea correctedExamField;
 
     @FXML
@@ -144,7 +146,7 @@ public class StudentDashboardViewController extends Utilities implements Control
         if(isSubmitAvailable) {
             exam.stopTimer();
             result = new Result(studentID, exam, examController,
-                    subjectNameLabel, examNameLabel1, gradeLabel);
+                    subjectNameLabel, examNameLabel1, gradeLabel, totalMarkLabel);
             result.setResultData(subjectNameField, selectExamField, correctedExamField);
             result.correctExam();
             transitToTab(tabPane, examTab, resultTab);

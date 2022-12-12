@@ -18,19 +18,26 @@ public class Result extends Utilities {
     private final Label subjectNameLabel;
     private final Label examNameLabel;
     private final Label gradeLabel;
+    private final Label totalMarkLabel;
 
-    public Result(String studentID, Exam exam, ExamController controller, Label subjectNameLabel, Label examNameLabel, Label gradeLabel){
+    public Result(String studentID, Exam exam, ExamController controller, Label subjectNameLabel, Label examNameLabel,
+                  Label gradeLabel, Label totalMarkLabel){
+
         this.studentID = studentID;
         this.exam = exam;
         this.controller = controller;
         this.subjectNameLabel = subjectNameLabel;
         this.examNameLabel = examNameLabel;
         this.gradeLabel = gradeLabel;
+        this.totalMarkLabel = totalMarkLabel;
     }
 
     public void correctExam(){
         String grade = this.controller.correctExam(exam.getQuestions(), exam.getStudentAnswers());
-        this.gradeLabel.setText(grade);
+        String studentMark = grade.split("/")[0];
+        String totalMark = grade.split("/")[1];
+        this.gradeLabel.setText(studentMark);
+        this.totalMarkLabel.setText(totalMark);
         this.controller.storeGradeForExam(this.studentID, this.exam.getExamID(), grade);
     }
 
