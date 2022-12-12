@@ -67,7 +67,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="subjectNameField" editable="false" layoutX="254.0" layoutY="138.0" prefHeight="27.0" prefWidth="228.0">
+                        <TextField fx:id="subjectNameField" alignment="CENTER" editable="false" layoutX="254.0" layoutY="138.0" prefHeight="27.0" prefWidth="228.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -104,7 +104,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="examNameField1" disable="true" layoutX="416.0" layoutY="162.0" prefHeight="27.0" prefWidth="212.0">
+                        <TextField fx:id="examNameField1" alignment="CENTER" disable="true" layoutX="416.0" layoutY="162.0" prefHeight="27.0" prefWidth="212.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -226,7 +226,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="examNameField2" disable="true" editable="false" layoutX="67.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="examNameField2" alignment="CENTER" disable="true" editable="false" layoutX="67.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -236,7 +236,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="showDurationField" disable="true" editable="false" layoutX="298.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
+                        <TextField fx:id="showDurationField" alignment="CENTER" disable="true" editable="false" layoutX="298.0" layoutY="98.0" prefHeight="27.0" prefWidth="210.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -499,7 +499,7 @@
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="subjectNameField1" editable="false" layoutX="256.0" layoutY="39.0" prefHeight="27.0" prefWidth="240.0">
+                        <TextField fx:id="subjectNameField1" alignment="CENTER" editable="false" layoutX="256.0" layoutY="39.0" prefHeight="27.0" prefWidth="240.0">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
