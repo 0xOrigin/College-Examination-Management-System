@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -77,6 +78,10 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     @FXML
     private TextField searchField;
     @FXML
+    private Button searchButton1;
+    @FXML
+    private TextField searchField1;
+    @FXML
     private TextField currentUsernameField;
     @FXML
     private TextField codeField;
@@ -88,6 +93,10 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     private ComboBox<Enum> columnField;
     @FXML
     private ComboBox<String> operationField;
+    @FXML
+    private ComboBox<Enum> columnField1;
+    @FXML
+    private ComboBox<String> operationField1;
     @FXML
     private TextArea descriptionField;
     @FXML
@@ -109,7 +118,7 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     @FXML
     private TableColumn<Map, Enum> usernameTableColumn;
     @FXML
-    private Tab listSubjectsTab;
+    private Tab listSearchSubjectsTab;
     @FXML
     private TableView<Map> tableView1;
     @FXML
@@ -182,26 +191,36 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     }
 
     @FXML
+    void onSelectOperation1Action(ActionEvent event) {
+        new ListAndSearchSubjects().list(subjectController, operationField1, tableView1, searchField1,
+                columnField1, searchButton1);
+    }
+
+    @FXML
     void onSearchButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new ListAndSearchUsers().search(event, alert, userController, tableView, searchField, columnField);
     }
 
     @FXML
-    void onListSearchTabSelection(Event event) {
+    void onSearchButton1Action(ActionEvent event) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        new ListAndSearchSubjects().search(event, alert, subjectController, tableView1, searchField1, columnField1);
+    }
+
+    @FXML
+    void onListSearchUsersTabSelection(Event event) {
         if(listSearchUsersTab.isSelected())
             new ListAndSearchUsers().resetTabView(operationField, tableView, searchField, columnField, searchButton);
     }
 
     @FXML
-    void onListSubjectsTabSelection(Event event) {
-        if(listSubjectsTab.isSelected()){
-            new ListSubjects().clearTableView(tableView1);
-            new ListSubjects().list(subjectController, tableView1);
-        }
+    void onListSearchSubjectsTabSelection(Event event) {
+        if(listSearchSubjectsTab.isSelected())
+            new ListAndSearchSubjects().resetTabView(operationField1, tableView1, searchField1, columnField1, searchButton1);
     }
 
-    void initializeListSubjectsTable(){
+    void initializeListSearchSubjectsTable(){
         codeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Code));
         nameTableColumn1.setCellValueFactory(new MapValueFactory<>(Column.Name));
         descriptionTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Description));
@@ -209,7 +228,7 @@ public class AdminDashboardViewController extends Utilities implements Controlle
         tableView1.getColumns().setAll(Arrays.asList(codeTableColumn, nameTableColumn1, descriptionTableColumn));
     }
 
-    void initializeListSearchTable(){
+    void initializeListSearchUsersTable(){
         idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
         nameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Name));
         emailTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Email));
@@ -237,18 +256,29 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     public void initialize(URL location, ResourceBundle resources) {
         genderField.getItems().setAll(Arrays.asList(Gender.values()));
         genderField.getSelectionModel().selectFirst();
+
         typeField.getItems().setAll(Arrays.asList(Type.values()));
         typeField.getSelectionModel().selectFirst();
-        operationField.getItems().setAll("Search", "List");
+
+        List<String> operations = Arrays.asList("Search", "List");
+
+        operationField.getItems().setAll(operations);
         operationField.getSelectionModel().selectFirst();
+
+        operationField1.getItems().setAll(operations);
+        operationField1.getSelectionModel().selectFirst();
+
         columnField.getItems().setAll(Arrays.asList(Column.ID, Column.Name, Column.Email, Column.Gender,
                 Column.Username, Column.Password, Column.Type));
         columnField.getSelectionModel().selectFirst();
 
-        initializeListSearchTable();
-        initializeListSubjectsTable();
+        columnField1.getItems().setAll(Arrays.asList(Column.Code, Column.Name, Column.Description));
+        columnField1.getSelectionModel().selectFirst();
+
+        initializeListSearchUsersTable();
+        initializeListSearchSubjectsTable();
 
         tabPane.getTabs().setAll(addUserTab, updateUserTab, deleteUserTab, listSearchUsersTab, addSubjectTab,
-                listSubjectsTab, deleteSubjectTab, assignSubjectTab);
+                listSearchSubjectsTab, deleteSubjectTab, assignSubjectTab);
     }
 }

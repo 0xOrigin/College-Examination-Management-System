@@ -175,22 +175,22 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="listSearchUsersTab" onSelectionChanged="#onListSearchTabSelection" text="List and Search users">
+            <Tab fx:id="listSearchUsersTab" onSelectionChanged="#onListSearchUsersTabSelection" text="List and Search users">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="9.0" layoutY="15.0" text="Select operation">
+                        <Label layoutX="11.0" layoutY="14.0" text="Select operation">
                            <font>
                               <Font name="Arial" size="17.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="operationField" layoutX="9.0" layoutY="40.0" onAction="#onSelectOperationAction" prefHeight="27.0" prefWidth="184.0" />
-                        <TextField fx:id="searchField" layoutX="401.0" layoutY="39.0" prefHeight="27.0" prefWidth="230.0" promptText="Search">
+                        <ComboBox fx:id="operationField" layoutX="11.0" layoutY="39.0" onAction="#onSelectOperationAction" prefHeight="27.0" prefWidth="184.0" />
+                        <TextField fx:id="searchField" layoutX="401.0" layoutY="38.0" prefHeight="27.0" prefWidth="230.0" promptText="Search">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="searchButton" layoutX="638.0" layoutY="39.0" mnemonicParsing="false" onAction="#onSearchButtonAction" prefHeight="24.0" prefWidth="81.0" text="Search">
+                        <Button fx:id="searchButton" layoutX="638.0" layoutY="38.0" mnemonicParsing="false" onAction="#onSearchButtonAction" prefHeight="24.0" prefWidth="81.0" text="Search">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -256,11 +256,11 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="listSubjectsTab" onSelectionChanged="#onListSubjectsTabSelection" text="List subjects">
+            <Tab fx:id="listSearchSubjectsTab" onSelectionChanged="#onListSearchSubjectsTabSelection" text="List and Search subjects">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableView1" layoutY="15.0" prefHeight="436.0" prefWidth="733.0">
+                        <TableView fx:id="tableView1" layoutY="84.0" prefHeight="367.0" prefWidth="733.0">
                           <columns>
                             <TableColumn fx:id="codeTableColumn" prefWidth="120.0" text="Code" />
                             <TableColumn fx:id="nameTableColumn1" prefWidth="214.0" text="Name" />
@@ -270,6 +270,28 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
+                        <Label layoutX="10.0" layoutY="14.0" text="Select operation">
+                           <font>
+                              <Font name="Arial" size="17.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="operationField1" layoutX="10.0" layoutY="40.0" onAction="#onSelectOperation1Action" prefHeight="27.0" prefWidth="184.0" />
+                        <TextField fx:id="searchField1" layoutX="396.0" layoutY="40.0" prefHeight="27.0" prefWidth="230.0" promptText="Search">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="searchButton1" layoutX="638.0" layoutY="40.0" mnemonicParsing="false" onAction="#onSearchButton1Action" prefHeight="24.0" prefWidth="81.0" text="Search">
+                           <font>
+                              <Font name="Arial" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="216.0" layoutY="13.0" text="Select column">
+                           <font>
+                              <Font name="Arial" size="17.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="columnField1" layoutX="216.0" layoutY="40.0" prefHeight="27.0" prefWidth="172.0" />
                      </children>
                   </AnchorPane>
               </content>

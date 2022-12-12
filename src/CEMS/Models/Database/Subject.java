@@ -91,4 +91,17 @@ public class Subject extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    public List<Map<Enum, Object>> searchBy(Enum column, String pattern){
+
+        List<Enum> fields = Arrays.asList(Column.Code, Column.Name, Column.Description);
+
+        this.selectQuery = new SelectBuilder(Arrays.asList(fields),
+                Table.Subject)
+                .where(column, "", null)
+                .like(pattern)
+                .build();
+
+        return super.getList(fields, this.selectQuery);
+    }
+
 }

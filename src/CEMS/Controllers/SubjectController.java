@@ -17,4 +17,6 @@ public interface SubjectController {
 
     List<Map<Enum, Object>> getAllSubjects();
 
+    List<Map<Enum, Object>> searchBy(Enum column, String pattern);
+
 }

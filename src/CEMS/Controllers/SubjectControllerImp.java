@@ -42,4 +42,10 @@ public class SubjectControllerImp implements SubjectController {
     public List<Map<Enum, Object>> getAllSubjects(){
         return this.dbContext.getSubjectModel().getAllSubjects();
     }
+
+    @Override
+    public List<Map<Enum, Object>> searchBy(Enum column, String pattern){
+        return this.dbContext.getSubjectModel().searchBy(column, "%" + pattern + "%");
+    }
+
 }
