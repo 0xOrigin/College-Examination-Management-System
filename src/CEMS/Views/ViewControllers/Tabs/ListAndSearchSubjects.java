@@ -28,6 +28,8 @@ public class ListAndSearchSubjects extends Utilities {
     public void list(SubjectController controller, ComboBox<String> operationField, TableView<Map> tableView,
                      TextField searchField, ComboBox<Enum> columnField, Button searchButton){
 
+        clearTableView(tableView);
+
         if(operationField.getSelectionModel().getSelectedItem().equals("List")){
             setSearchElementsStatus(searchField, columnField, searchButton, true);
             List<Map<Enum, Object>> subjects = controller.getAllSubjects();
@@ -36,7 +38,6 @@ public class ListAndSearchSubjects extends Utilities {
             }
         }
         else {
-            clearTableView(tableView);
             setSearchElementsStatus(searchField, columnField, searchButton, false);
         }
     }

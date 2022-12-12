@@ -69,9 +69,9 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     private TableColumn<Map, Enum> contentTableColumn;
     @FXML
-    private TextField correctAnswerField;
+    private ComboBox<String> correctAnswerSelector;
     @FXML
-    private TextField correctAnswerField1;
+    private ComboBox<String> correctAnswerSelector1;
     @FXML
     private TableColumn<Map, Enum> correctAnswerTableColumn;
     @FXML
@@ -180,14 +180,14 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     void onAddQuestionButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new AddQuestion().add(event, alert, questionController, examController, selectSubjectField4, examIdField3,
-                contentField, choice1Field, choice2Field, choice3Field, choice4Field, choice5Field, correctAnswerField);
+                contentField, choice1Field, choice2Field, choice3Field, choice4Field, choice5Field, correctAnswerSelector);
     }
 
     @FXML
     void onAddQuestionTabSelection(Event event) {
         if(addQuestionTab.isSelected()){
             new AddQuestion().resetTabView(selectSubjectField4, examIdField3, contentField, choice1Field, choice2Field,
-                    choice3Field, choice4Field, choice5Field, correctAnswerField);
+                    choice3Field, choice4Field, choice5Field, correctAnswerSelector);
         }
     }
 
@@ -209,15 +209,15 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         alert = new Alert(Alert.AlertType.ERROR);
         new UpdateQuestion().setQuestionData(event, alert, questionController, questionIdField, this.username.toString(),
                 contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
-                correctAnswerField1, updateQuestionButton);
+                correctAnswerSelector1, updateQuestionButton);
     }
 
     @FXML
     void onCurrentQuestionIDFieldKeyPress(KeyEvent event){
         new UpdateQuestion().clearUpdateElements(contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1,
-                choice5Field1, correctAnswerField1);
+                choice5Field1, correctAnswerSelector1);
         new UpdateQuestion().setUpdateElementsStatus(contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
-                correctAnswerField1, updateQuestionButton, true);
+                correctAnswerSelector1, updateQuestionButton, true);
     }
 
     @FXML
@@ -279,7 +279,7 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         alert = new Alert(Alert.AlertType.ERROR);
         new UpdateQuestion().update(event, alert, questionController, questionIdField, this.username.toString(),
                 contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1, choice5Field1,
-                correctAnswerField1);
+                correctAnswerSelector1);
     }
 
     @FXML
@@ -389,6 +389,10 @@ public class LecturerDashboardViewController extends Utilities implements Contro
 
         initializeDurationField(durationField);
         initializeDurationField(durationField1);
+
+        List<String> choices = Arrays.asList("Choice 1", "Choice 2", "Choice 3", "Choice 4", "Choice 5");
+        correctAnswerSelector.getItems().setAll(choices);
+        correctAnswerSelector1.getItems().setAll(choices);
 
         tabPane.getTabs().setAll(addExamTab, updateExamTab, deleteExamTab, listExamsTab, viewExamTab,
                 addQuestionTab, updateQuestionTab, deleteQuestionTab, showReportTab);

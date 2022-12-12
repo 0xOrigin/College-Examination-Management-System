@@ -3,10 +3,9 @@ package CEMS.Views.ViewControllers.Validators;
 import CEMS.Controllers.QuestionController;
 import CEMS.Views.Utilities;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class QuestionValidator extends Utilities {
 
@@ -44,29 +43,13 @@ public class QuestionValidator extends Utilities {
         return true;
     }
 
-    public boolean validateCorrectAnswer(TextField choice1Field, TextField choice2Field, TextField choice3Field,
-                                         TextField choice4Field, TextField choice5Field, TextField correctAnswerField,
-                                         Alert alert){
-
+    public boolean validateCorrectAnswer(ComboBox<String> correctAnswerSelector, Alert alert) {
         String alertTitle = "Correct Answer field";
-        String correctAnswer = correctAnswerField.getText().trim();
-
-        if(correctAnswer.isBlank()) {
-            handleAlert(alert, alertTitle, "Correct Answer field is required and cannot be blank!", Alert.AlertType.ERROR);
+        int indexOfCurrentSelection = correctAnswerSelector.getSelectionModel().getSelectedIndex();
+        if(indexOfCurrentSelection < 0){
+            handleAlert(alert, alertTitle, "You haven't chosen the correct answer yet!", Alert.AlertType.ERROR);
             return false;
         }
-
-        List<String> choices = Arrays.asList(choice1Field.getText().trim(), choice2Field.getText().trim(),
-                choice3Field.getText().trim(), choice4Field.getText().trim(), choice5Field.getText().trim());
-
-        boolean result = false;
-        for(String choice : choices)
-            result |= correctAnswer.equals(choice);
-        if(result)
-            return true;
-
-        handleAlert(alert, alertTitle, "The correct answer does not correspond to any choice!", Alert.AlertType.ERROR);
-        return false;
+        return true;
     }
-
 }
