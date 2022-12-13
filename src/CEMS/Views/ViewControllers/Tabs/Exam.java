@@ -18,6 +18,7 @@ public class Exam extends Utilities {
     private QuestionController questionController;
     private final List<Map<Enum, Object>> questions;
     private final Map<String, RadioButton> studentAnswers;
+    private final Map<String, String> studentAnswersText;
     private int indexOfCurrentQuestion = 0;
     private Alert alert;
     private Timer timer;
@@ -40,6 +41,7 @@ public class Exam extends Utilities {
         this.questionController = questionController;
         this.questions = this.retrieveExamQuestions(examID, questionController);
         this.studentAnswers = new HashMap<>();
+        this.studentAnswersText = new HashMap<>();
 
         this.setExamName(selectExamField, examNameLabel);
         this.setTotalQuestionsNum(totalQuestionsNumLabel);
@@ -137,13 +139,7 @@ public class Exam extends Utilities {
     }
 
     public Map<String, String> getStudentAnswers(){
-        Map<String, String> answers = new HashMap<>();
-        int iterator = 0;
-        for(Map.Entry<String, RadioButton> entry : this.studentAnswers.entrySet()) {
-            loadCurrentQuestion(iterator++);
-            answers.put(entry.getKey(), (entry.getValue() != null ? entry.getValue().getText() : null));
-        }
-        return answers;
+        return this.studentAnswersText;
     }
 
     public String getExamID(){
@@ -153,6 +149,8 @@ public class Exam extends Utilities {
     private void updateAnswer(int indexOfCurrentQuestion){
         String questionID = getQuestionID(indexOfCurrentQuestion);
         this.studentAnswers.put(questionID, (RadioButton) this.Answers.getSelectedToggle());
+        if(((RadioButton) this.Answers.getSelectedToggle()) != null)
+            this.studentAnswersText.put(questionID, ((RadioButton) this.Answers.getSelectedToggle()).getText());
     }
 
     private void updateSelection(int indexOfCurrentQuestion){
