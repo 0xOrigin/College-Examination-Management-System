@@ -96,7 +96,7 @@ public class SQLiteAdapter extends DML implements Adapter {
             if(isFile(value))
                 valuesString = valuesString.concat(" ? ");
             
-            else if(value instanceof String && !((String) value).matches(".*[+|-|\\*].*")) // To support +=, -=, *= 
+            else if(value instanceof String && !((String) value).matches(".*[+*-][=].*")) // To support +=, -=, *=
                 valuesString = valuesString.concat("\'" + value + "\'");
             
             else
