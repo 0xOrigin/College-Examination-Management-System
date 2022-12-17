@@ -9,9 +9,26 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Add user.
+ */
 public class AddUser extends Utilities {
+
     UserValidator userValidator = new UserValidator();
 
+    /**
+     * Add.
+     *
+     * @param event         the event
+     * @param alert         the alert
+     * @param controller    the controller
+     * @param nameField     the name field
+     * @param emailField    the email field
+     * @param usernameField the username field
+     * @param passwordField the password field
+     * @param genderField   the gender field
+     * @param typeField     the type field
+     */
     public void add(ActionEvent event, Alert alert, UserController controller, TextField nameField, TextField emailField,
              TextField usernameField, PasswordField passwordField, ComboBox<Enum> genderField, ComboBox<Enum> typeField){
 

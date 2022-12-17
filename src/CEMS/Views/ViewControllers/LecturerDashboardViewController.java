@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * The class Lecturer dashboard view controller.
+ */
 public class LecturerDashboardViewController extends Utilities implements Controller, Initializable {
 
     String name;
@@ -165,17 +168,32 @@ public class LecturerDashboardViewController extends Utilities implements Contro
     @FXML
     private Tab viewExamTab;
 
+    /**
+     * On logout button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
         super.changeScene(event, "LoginView.fxml", "College Examination Management System");
     }
 
+    /**
+     * On add exam button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onAddExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new AddExam().add(event, alert, examController, selectSubjectField, examNameField, durationField);
     }
 
+    /**
+     * On add question button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onAddQuestionButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -183,6 +201,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 contentField, choice1Field, choice2Field, choice3Field, choice4Field, choice5Field, correctAnswerSelector);
     }
 
+    /**
+     * On add question tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onAddQuestionTabSelection(Event event) {
         if(addQuestionTab.isSelected()){
@@ -191,6 +214,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         }
     }
 
+    /**
+     * On current exam button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -198,12 +226,22 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 durationField1, updateExamButton);
     }
 
+    /**
+     * On current exam id field key press.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentExamIDFieldKeyPress(KeyEvent event){
         new UpdateExam().clearUpdateElements(examNameField1, durationField1);
         new UpdateExam().setUpdateElementsStatus(examNameField1, durationField1, updateExamButton, true);
     }
 
+    /**
+     * On current question button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentQuestionButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -212,6 +250,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 correctAnswerSelector1, updateQuestionButton);
     }
 
+    /**
+     * On current question id field key press.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentQuestionIDFieldKeyPress(KeyEvent event){
         new UpdateQuestion().clearUpdateElements(contentField1, choice1Field1, choice2Field1, choice3Field1, choice4Field1,
@@ -220,56 +263,106 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 correctAnswerSelector1, updateQuestionButton, true);
     }
 
+    /**
+     * On delete exam button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onDeleteExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new DeleteExam().delete(event, alert, examController, selectSubjectField2, examIdField1);
     }
 
+    /**
+     * On delete question button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onDeleteQuestionButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new DeleteQuestion().delete(event, alert, questionController, questionIdField1, this.username.toString());
     }
 
+    /**
+     * On list exams tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onListExamsTabSelection(Event event) {
         if(listExamsTab.isSelected())
             new ListExams().list(userController, tableView, this.username.toString());
     }
 
+    /**
+     * On show report button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onShowReportButtonAction(ActionEvent event) {
         new ShowReport().show(subjectController, tableView2, selectSubjectField5);
     }
 
+    /**
+     * On show report tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onShowReportTabSelection(Event event){
         if(showReportTab.isSelected())
             new ShowReport().resetTabView(selectSubjectField5, tableView2);
     }
 
+    /**
+     * On select subject field change.
+     *
+     * @param event the event
+     */
     @FXML
     void onSelectSubjectFieldChange(ActionEvent event) {
         updateSubjectNameField(selectSubjectField, subjectNameField, subjects);
     }
 
+    /**
+     * On select subject field 1 action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSelectSubjectField1Action(ActionEvent event){
         onCurrentExamIDFieldKeyPress(null);
     }
 
+    /**
+     * On select subject field 5 action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSelectSubjectField5Action(ActionEvent event){
         updateSubjectNameField(selectSubjectField5, subjectNameField1, subjects);
     }
 
+    /**
+     * On update exam button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onUpdateExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new UpdateExam().update(event, alert, examController, examIdField, selectSubjectField1, examNameField1, durationField1);
     }
 
+    /**
+     * On update question button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onUpdateQuestionButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -278,6 +371,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 correctAnswerSelector1);
     }
 
+    /**
+     * On view exam button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onViewExamButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -285,6 +383,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 showDurationField, tableView1);
     }
 
+    /**
+     * On view exam tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onViewExamTabSelection(Event event) {
         if(viewExamTab.isSelected()){
@@ -292,17 +395,35 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         }
     }
 
+    /**
+     * Update subject name field.
+     *
+     * @param selectSubjectField the select subject field
+     * @param subjectNameField   the subject name field
+     * @param subjects           the subjects
+     */
     void updateSubjectNameField(ComboBox<String> selectSubjectField, TextField subjectNameField, List<Map<Enum, Object>> subjects){
         int subjectCodeIndex = selectSubjectField.getSelectionModel().getSelectedIndex();
         subjectNameField.setText(subjects.get(subjectCodeIndex).get(Column.SubjectName).toString());
     }
 
+    /**
+     * Initialize select subject field.
+     *
+     * @param subjectField the subject field
+     * @param subjects     the subjects
+     */
     void initializeSelectSubjectField(ComboBox<String> subjectField, List<Map<Enum, Object>> subjects){
         for(Map<Enum, Object> subject : subjects)
             subjectField.getItems().add(subject.get(Column.Code).toString());
         subjectField.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Initialize duration field.
+     *
+     * @param durationField the duration field
+     */
     void initializeDurationField(Spinner<Integer> durationField){
         int min = 10;
         int max = 180;
@@ -311,6 +432,9 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         durationField.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, initialValue, amountToStepBy));
     }
 
+    /**
+     * Initialize list exams table.
+     */
     void initializeListExamsTable(){
         idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
         subjectCodeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.SubjectCode));
@@ -322,6 +446,9 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 examNameTableColumn, durationTableColumn));
     }
 
+    /**
+     * Initialize view exam table.
+     */
     void initializeViewExamTable(){
         questionIdTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
         contentTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Content));
@@ -337,6 +464,9 @@ public class LecturerDashboardViewController extends Utilities implements Contro
                 correctAnswerTableColumn));
     }
 
+    /**
+     * Initialize show report table.
+     */
     void initializeShowReportTable(){
         studentIdTableColumn.setCellValueFactory(new MapValueFactory<>(Column.StudentID));
         studentNameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.StudentName));
@@ -361,6 +491,11 @@ public class LecturerDashboardViewController extends Utilities implements Contro
         initializeSelectionFields(this.username.toString());
     }
 
+    /**
+     * Initialize selection fields.
+     *
+     * @param username the username
+     */
     void initializeSelectionFields(String username){
         subjects = userController.getAllRegisteredSubjectsFor(username);
 

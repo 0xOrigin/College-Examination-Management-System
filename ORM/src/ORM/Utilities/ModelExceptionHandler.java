@@ -3,15 +3,17 @@ package ORM.Utilities;
 import java.sql.SQLException;
 
 /**
+ * The class Model exception handler.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class ModelExceptionHandler {
-    
+
     /**
+     * Handle.
      *
-     * @param exception
-     * @param On
+     * @param exception the exception
+     * @param On        the print determination
      */
     public static void handle(SQLException exception, boolean On){
     

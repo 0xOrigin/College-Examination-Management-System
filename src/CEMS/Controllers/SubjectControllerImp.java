@@ -5,10 +5,21 @@ import CEMS.Models.DbContext;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Subject controller imp.
+ */
 public class SubjectControllerImp implements SubjectController {
 
+    /**
+     * The Db context.
+     */
     protected final DbContext dbContext;
 
+    /**
+     * Instantiates a new Subject controller imp.
+     *
+     * @param dbContext the db context
+     */
     public SubjectControllerImp(DbContext dbContext) {
         this.dbContext = dbContext;
     }

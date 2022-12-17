@@ -15,14 +15,33 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * The class Utilities.
+ */
 public class Utilities {
 
+    /**
+     * Change scene.
+     *
+     * @param event      the event
+     * @param fxmlFile   the fxml file
+     * @param stageTitle the stage title
+     */
     protected void changeScene(ActionEvent event, String fxmlFile, String stageTitle){
         FXMLLoader loader = getLoader(fxmlFile);
         Parent root = getParent(loader);
         setStagePreferences(root, event, stageTitle);
     }
 
+    /**
+     * Change scene and set controller data.
+     *
+     * @param event      the event
+     * @param fxmlFile   the fxml file
+     * @param stageTitle the stage title
+     * @param username   the username
+     * @param name       the name
+     */
     protected void changeSceneAndSet(ActionEvent event, String fxmlFile, String stageTitle, String username, String name){
         FXMLLoader loader = getLoader(fxmlFile);
         Parent root = getParent(loader);
@@ -30,6 +49,11 @@ public class Utilities {
         setStagePreferences(root, event, stageTitle);
     }
 
+    /**
+     * Center on screen.
+     *
+     * @param stage the stage
+     */
     public static void centerOnScreen(Stage stage){
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
@@ -60,6 +84,14 @@ public class Utilities {
         stage.show();
     }
 
+    /**
+     * Handle alert.
+     *
+     * @param alert     the alert
+     * @param title     the title
+     * @param message   the message
+     * @param alertType the alert type
+     */
     protected void handleAlert(Alert alert, String title, String message, Alert.AlertType alertType){
         alert.setAlertType(alertType);
         alert.setTitle(title);
@@ -67,10 +99,21 @@ public class Utilities {
         alert.show();
     }
 
+    /**
+     * Set alert owner.
+     *
+     * @param event the event
+     * @param alert the alert
+     */
     protected void setAlertOwner(ActionEvent event, Alert alert){
         alert.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
+    /**
+     * Clear table view.
+     *
+     * @param tableView the table view
+     */
     protected void clearTableView(TableView<Map> tableView){
         tableView.getItems().clear();
     }

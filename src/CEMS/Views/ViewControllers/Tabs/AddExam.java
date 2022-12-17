@@ -10,10 +10,23 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 
+/**
+ * The class Add exam.
+ */
 public class AddExam extends Utilities {
 
     ExamValidator examValidator = new ExamValidator();
 
+    /**
+     * Add.
+     *
+     * @param event              the event
+     * @param alert              the alert
+     * @param controller         the controller
+     * @param selectSubjectField the select subject field
+     * @param examNameField      the exam name field
+     * @param durationField      the duration field
+     */
     public void add(ActionEvent event, Alert alert, ExamController controller, ComboBox<String> selectSubjectField,
                     TextField examNameField, Spinner<Integer> durationField){
 

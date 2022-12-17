@@ -10,6 +10,9 @@ import javafx.scene.control.*;
 
 import java.util.*;
 
+/**
+ * The type Exam.
+ */
 public class Exam extends Utilities {
 
     private String studentID;
@@ -32,6 +35,17 @@ public class Exam extends Utilities {
     private Button nextSubmitButton;
     private Button prevButton;
 
+    /**
+     * Instantiates a new Exam.
+     *
+     * @param studentID              the student id
+     * @param examID                 the exam id
+     * @param selectExamField        the select exam field
+     * @param examNameLabel          the exam name label
+     * @param totalQuestionsNumLabel the total questions num label
+     * @param examController         the exam controller
+     * @param questionController     the question controller
+     */
     public Exam(String studentID, String examID, ComboBox<String> selectExamField, Label examNameLabel, Label totalQuestionsNumLabel,
                 ExamController examController, QuestionController questionController){
 
@@ -55,6 +69,19 @@ public class Exam extends Utilities {
         return controller.getAllQuestionsFor(examID);
     }
 
+    /**
+     * Set exam tab attributes.
+     *
+     * @param questionLabel    the question label
+     * @param Answers          the answers
+     * @param choice1Button    the choice 1 button
+     * @param choice2Button    the choice 2 button
+     * @param choice3Button    the choice 3 button
+     * @param choice4Button    the choice 4 button
+     * @param choice5Button    the choice 5 button
+     * @param prevButton       the prev button
+     * @param nextSubmitButton the next submit button
+     */
     public void setExamTabAttributes(Label questionLabel, ToggleGroup Answers, RadioButton choice1Button, RadioButton choice2Button, RadioButton choice3Button,
                               RadioButton choice4Button, RadioButton choice5Button, Button prevButton, Button nextSubmitButton){
 
@@ -69,6 +96,16 @@ public class Exam extends Utilities {
         this.nextSubmitButton = nextSubmitButton;
     }
 
+    /**
+     * Start.
+     *
+     * @param event                   the event
+     * @param alert                   the alert
+     * @param showDurationField       the show duration field
+     * @param timerLabel              the timer label
+     * @param currentQuestionNumLabel the current question num label
+     * @return the boolean
+     */
     public boolean start(ActionEvent event, Alert alert, TextField showDurationField, Label timerLabel, Label currentQuestionNumLabel){
         this.alert = alert;
         super.setAlertOwner(event, alert);
@@ -110,6 +147,11 @@ public class Exam extends Utilities {
         choiceButton.setDisable(choiceButton.getText().isBlank());
     }
 
+    /**
+     * Increment current question number.
+     *
+     * @param currentQuestionNumLabel the current question number label
+     */
     public void incrementCurrentQuestionNum(Label currentQuestionNumLabel){
         updateAnswer(this.indexOfCurrentQuestion);
         if(this.indexOfCurrentQuestion < this.questions.size()-1){
@@ -122,6 +164,11 @@ public class Exam extends Utilities {
         updateNextButtonText();
     }
 
+    /**
+     * Decrement current question number.
+     *
+     * @param currentQuestionNumLabel the current question number label
+     */
     public void decrementCurrentQuestionNum(Label currentQuestionNumLabel){
         updateAnswer(this.indexOfCurrentQuestion);
         if(this.indexOfCurrentQuestion > 0){
@@ -134,14 +181,29 @@ public class Exam extends Utilities {
         updateNextButtonText();
     }
 
+    /**
+     * Get questions.
+     *
+     * @return the list
+     */
     public List<Map<Enum, Object>> getQuestions(){
         return this.questions;
     }
 
+    /**
+     * Get student answers.
+     *
+     * @return the map
+     */
     public Map<String, String> getStudentAnswers(){
         return this.studentAnswersText;
     }
 
+    /**
+     * Get exam id.
+     *
+     * @return the exam id
+     */
     public String getExamID(){
         return this.examID;
     }
@@ -186,6 +248,11 @@ public class Exam extends Utilities {
         return (this.indexOfCurrentQuestion == this.questions.size() - 1);
     }
 
+    /**
+     * Is submit unlocked.
+     *
+     * @return the boolean
+     */
     public boolean isSubmitUnlocked(){
         return this.isLastQuestion();
     }
@@ -199,6 +266,9 @@ public class Exam extends Utilities {
         this.prevButton.setDisable(this.isFirstQuestion());
     }
 
+    /**
+     * Stop timer.
+     */
     public void stopTimer(){
         this.timer.cancel();
     }
@@ -208,6 +278,8 @@ public class Exam extends Utilities {
         Platform.runLater(() -> handleAlert(this.alert, "Time is up!",
                 "All previous answers have been submitted.",
                 Alert.AlertType.WARNING));
+
+        // Submit all answers
         while(!isLastQuestion()){
             Platform.runLater(() -> this.nextSubmitButton.fire());
         }
@@ -216,18 +288,24 @@ public class Exam extends Utilities {
 
     private void setTimer(long minutes, Label timerLabel) {
         timer = new Timer();
+
         int delay = 0;
         int period = 1000;
         long seconds = minutes * 60L;
+
+        // Start the timer
         final long[] interval = {seconds};
         timer.scheduleAtFixedRate(new TimerTask() {
 
             public void run() {
 
                 if(interval[0] >= 0) {
+
+                    // Calculate the time in hours:minutes:seconds
                     long seconds = interval[0] % 60;
                     long minutes = (interval[0] % 3600) / 60;
                     long hours = interval[0] / 3600;
+
                     String currentTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
                     Platform.runLater(() -> timerLabel.setText(currentTime));

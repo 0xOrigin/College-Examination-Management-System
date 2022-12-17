@@ -8,9 +8,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Add subject.
+ */
 public class AddSubject extends Utilities {
+
     SubjectValidator subjectValidator = new SubjectValidator();
 
+    /**
+     * Add.
+     *
+     * @param event            the event
+     * @param alert            the alert
+     * @param controller       the controller
+     * @param subjectNameField the subject name field
+     * @param codeField        the code field
+     * @param descriptionField the description field
+     */
     public void add(ActionEvent event, Alert alert, SubjectController controller, TextField subjectNameField,
                     TextField codeField, TextArea descriptionField){
         

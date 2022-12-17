@@ -5,8 +5,19 @@ import CEMS.Views.Utilities;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Subject validator.
+ */
 public class SubjectValidator extends Utilities {
 
+    /**
+     * Validate code.
+     *
+     * @param codeField  the code field
+     * @param alert      the alert
+     * @param controller the controller
+     * @return the boolean
+     */
     public boolean validateCode(TextField codeField, Alert alert, SubjectController controller){
         String alertTitle = "Code field";
         String code = codeField.getText().trim();
@@ -17,6 +28,15 @@ public class SubjectValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check subject existence.
+     *
+     * @param codeField   the code field
+     * @param registerVal the register val
+     * @param alert       the alert
+     * @param controller  the controller
+     * @return the boolean
+     */
     public boolean checkSubjectExistence(TextField codeField, boolean registerVal, Alert alert, SubjectController controller){
         String alertTitle = "Code field";
         String code = codeField.getText().trim();
@@ -31,6 +51,14 @@ public class SubjectValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate name.
+     *
+     * @param nameField  the name field
+     * @param alert      the alert
+     * @param controller the controller
+     * @return the boolean
+     */
     public boolean validateName(TextField nameField, Alert alert, SubjectController controller){
         String alertTitle = "Name field";
         String name = nameField.getText().trim();

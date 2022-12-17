@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Subject.
+ */
 public class Subject extends ModelUtility {
 
     private final Adapter subjectModel;
@@ -18,11 +21,23 @@ public class Subject extends ModelUtility {
     private ResultSet resultSet;
     private Resource resource;
 
+    /**
+     * Instantiates a new Subject.
+     *
+     * @param adapter the adapter
+     */
     public Subject(Adapter adapter){
         super(adapter);
         this.subjectModel = adapter;
     }
 
+    /**
+     * Insert.
+     *
+     * @param code        the subject code
+     * @param name        the name
+     * @param description the description
+     */
     public void insert(String code, String name, String description){
 
         List<Enum> fields = Arrays.asList(Column.Code, Column.Name, Column.Description);
@@ -32,14 +47,32 @@ public class Subject extends ModelUtility {
         this.subjectModel.insert(fields, values);
     }
 
+    /**
+     * Update.
+     *
+     * @param fields the fields
+     * @param values the values
+     * @param code   the subject code
+     */
     public void update(List<Enum> fields, List<Object> values, String code){
         this.subjectModel.update(fields, values, this.subjectModel.Where(Column.Code, "=", code));
     }
 
+    /**
+     * Delete.
+     *
+     * @param code the subject code
+     */
     public void delete(String code){
         this.subjectModel.delete(this.subjectModel.Where(Column.Code, "=", code));
     }
 
+    /**
+     * Is subject exists.
+     *
+     * @param code the code
+     * @return the boolean
+     */
     public boolean isSubjectExists(String code){
 
         boolean isExists = false;
@@ -66,6 +99,12 @@ public class Subject extends ModelUtility {
         return isExists;
     }
 
+    /**
+     * Get report for a specific subject.
+     *
+     * @param subjectCode the subject code
+     * @return the list
+     */
     public List<Map<Enum, Object>> getReportForSubject(String subjectCode){
 
         List<Enum> fields = Arrays.asList(Column.StudentID, Column.StudentName, Column.ExamID, Column.ExamName, Column.Grade);
@@ -80,6 +119,11 @@ public class Subject extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Get all subjects.
+     *
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllSubjects(){
 
         List<Enum> fields = Arrays.asList(Column.Code, Column.Name, Column.Description);
@@ -91,6 +135,13 @@ public class Subject extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Search by.
+     *
+     * @param column  the column
+     * @param pattern the pattern
+     * @return the list
+     */
     public List<Map<Enum, Object>> searchBy(Enum column, String pattern){
 
         List<Enum> fields = Arrays.asList(Column.Code, Column.Name, Column.Description);

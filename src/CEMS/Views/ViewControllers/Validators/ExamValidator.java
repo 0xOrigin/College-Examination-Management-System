@@ -6,8 +6,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Exam validator.
+ */
 public class ExamValidator extends Utilities {
 
+    /**
+     * Validate exam name.
+     *
+     * @param examNameField the exam name field
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean validateExamName(TextField examNameField, Alert alert, ExamController controller){
         String alertTitle = "Exam name field";
         String examName = examNameField.getText().trim();
@@ -18,6 +29,14 @@ public class ExamValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check exam name availability.
+     *
+     * @param examNameField the exam name field
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean checkExamNameAvailability(TextField examNameField, Alert alert, ExamController controller){
         String alertTitle = "Exam name field";
         String examName = examNameField.getText().trim();
@@ -28,6 +47,15 @@ public class ExamValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate exam id.
+     *
+     * @param examIdField        the exam id field
+     * @param selectSubjectField the select subject field
+     * @param alert              the alert
+     * @param controller         the controller
+     * @return the boolean
+     */
     public boolean validateExamID(TextField examIdField, ComboBox<String> selectSubjectField, Alert alert, ExamController controller){
         String alertTitle = "Exam ID field";
         String examID = examIdField.getText().trim();

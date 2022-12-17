@@ -6,6 +6,9 @@ import CEMS.Models.Enum.Table;
 import ORM.SQLiteAdapter;
 
 
+/**
+ * The class CEMS db context.
+ */
 public class CEMS_DbContext implements DbContext {
     private final User userModel;
     private final Subject subjectModel;
@@ -15,6 +18,9 @@ public class CEMS_DbContext implements DbContext {
     private final Take takeModel;
 
 
+    /**
+     * Instantiates a new CEMS db context.
+     */
     public CEMS_DbContext(){
 
         this.userModel= new User(new SQLiteAdapter(Table.User, Column.Username));

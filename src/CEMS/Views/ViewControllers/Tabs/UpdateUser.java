@@ -13,9 +13,25 @@ import javafx.scene.control.TextField;
 import java.util.Arrays;
 import java.util.Map;
 
+/**
+ * The class Update user.
+ */
 public class UpdateUser extends Utilities {
+
     UserValidator userValidator = new UserValidator();
 
+    /**
+     * Update.
+     *
+     * @param event                the event
+     * @param alert                the alert
+     * @param controller           the controller
+     * @param currentUsernameField the current username field
+     * @param usernameField        the username field
+     * @param emailField           the email field
+     * @param passwordField        the password field
+     * @param loggedInUsername     the logged-in username
+     */
     public void update(ActionEvent event, Alert alert, UserController controller, TextField currentUsernameField,
                        TextField usernameField, TextField emailField, PasswordField passwordField, StringBuilder loggedInUsername){
 
@@ -44,6 +60,18 @@ public class UpdateUser extends Utilities {
         }
     }
 
+    /**
+     * Set user data.
+     *
+     * @param event                the event
+     * @param alert                the alert
+     * @param controller           the controller
+     * @param currentUsernameField the current username field
+     * @param emailField           the email field
+     * @param usernameField        the username field
+     * @param passwordField        the password field
+     * @param updateButton         the update button
+     */
     public void setUserData(ActionEvent event, Alert alert, UserController controller, TextField currentUsernameField,
                             TextField emailField, TextField usernameField, PasswordField passwordField, Button updateButton){
 
@@ -63,6 +91,15 @@ public class UpdateUser extends Utilities {
         }
     }
 
+    /**
+     * Set update elements status.
+     *
+     * @param emailField    the email field
+     * @param usernameField the username field
+     * @param passwordField the password field
+     * @param updateButton  the update button
+     * @param disable       the disable determination
+     */
     public void setUpdateElementsStatus(TextField emailField, TextField usernameField, PasswordField passwordField,
                                         Button updateButton, boolean disable){
         emailField.setDisable(disable);
@@ -71,6 +108,13 @@ public class UpdateUser extends Utilities {
         updateButton.setDisable(disable);
     }
 
+    /**
+     * Clear update elements.
+     *
+     * @param emailField    the email field
+     * @param usernameField the username field
+     * @param passwordField the password field
+     */
     public void clearUpdateElements(TextField emailField, TextField usernameField, PasswordField passwordField){
         emailField.clear();
         usernameField.clear();

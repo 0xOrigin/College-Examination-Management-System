@@ -8,8 +8,18 @@ import javafx.scene.control.TableView;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Show report.
+ */
 public class ShowReport extends Utilities {
 
+    /**
+     * Show.
+     *
+     * @param controller         the controller
+     * @param tableView          the table view
+     * @param selectSubjectField the select subject field
+     */
     public void show(SubjectController controller, TableView<Map> tableView, ComboBox<String> selectSubjectField){
 
         super.clearTableView(tableView);
@@ -20,6 +30,12 @@ public class ShowReport extends Utilities {
         }
     }
 
+    /**
+     * Reset tab view.
+     *
+     * @param selectSubjectField the select subject field
+     * @param tableView          the table view
+     */
     public void resetTabView(ComboBox<String> selectSubjectField, TableView<Map> tableView){
         super.clearTableView(tableView);
         selectSubjectField.getSelectionModel().selectFirst();

@@ -9,10 +9,24 @@ import javafx.scene.control.*;
 import java.util.Arrays;
 import java.util.Map;
 
+/**
+ * The class Update exam.
+ */
 public class UpdateExam extends Utilities {
 
     ExamValidator examValidator = new ExamValidator();
 
+    /**
+     * Update.
+     *
+     * @param event              the event
+     * @param alert              the alert
+     * @param controller         the controller
+     * @param examIdField        the exam id field
+     * @param selectSubjectField the select subject field
+     * @param examNameField      the exam name field
+     * @param durationField      the duration field
+     */
     public void update(ActionEvent event, Alert alert, ExamController controller, TextField examIdField,
                        ComboBox<String> selectSubjectField, TextField examNameField, Spinner<Integer> durationField){
 
@@ -37,6 +51,18 @@ public class UpdateExam extends Utilities {
         }
     }
 
+    /**
+     * Set exam data.
+     *
+     * @param event              the event
+     * @param alert              the alert
+     * @param controller         the controller
+     * @param examIdField        the exam id field
+     * @param selectSubjectField the select subject field
+     * @param examNameField      the exam name field
+     * @param durationField      the duration field
+     * @param updateButton       the update button
+     */
     public void setExamData(ActionEvent event, Alert alert, ExamController controller, TextField examIdField,
                             ComboBox<String> selectSubjectField, TextField examNameField, Spinner<Integer> durationField,
                             Button updateButton){
@@ -55,6 +81,14 @@ public class UpdateExam extends Utilities {
         }
     }
 
+    /**
+     * Set update elements status.
+     *
+     * @param examNameField the exam name field
+     * @param durationField the duration field
+     * @param updateButton  the update button
+     * @param disable       the disable determination
+     */
     public void setUpdateElementsStatus(TextField examNameField, Spinner<Integer> durationField,
                                         Button updateButton, boolean disable){
         examNameField.setDisable(disable);
@@ -62,6 +96,12 @@ public class UpdateExam extends Utilities {
         updateButton.setDisable(disable);
     }
 
+    /**
+     * Clear update elements.
+     *
+     * @param examNameField the exam name field
+     * @param durationField the duration field
+     */
     public void clearUpdateElements(TextField examNameField, Spinner<Integer> durationField){
         examNameField.clear();
         durationField.getValueFactory().setValue(10);

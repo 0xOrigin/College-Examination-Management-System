@@ -10,6 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * The class Login view controller.
+ */
 public class LoginViewController extends Utilities {
 
     LoginController loginController = new LoginControllerImp(new CEMS_DbContext());
@@ -18,6 +21,12 @@ public class LoginViewController extends Utilities {
     private PasswordField passwordField;
     @FXML
     private TextField usernameField;
+
+    /**
+     * On login button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onLoginButtonAction(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -58,6 +67,7 @@ public class LoginViewController extends Utilities {
     }
 
     private boolean allowToLogin(String userType, String username){
+        // Check if the user is admin or another type of users that has at least 1 registered subject
         boolean typeEquality = userType.equals(Type.Admin.name());
         int count = loginController.countOfRegisteredSubjectsFor(username);
         return typeEquality || count > 0;

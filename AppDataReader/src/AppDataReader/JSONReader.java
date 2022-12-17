@@ -9,15 +9,21 @@ import org.json.simple.parser.*;
 import java.util.Map;
 
 /**
+ * The class Json reader.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 class JSONReader {
 
     private Object parsedFile;
     private JSONObject json;
-    
-    
+
+
+    /**
+     * Instantiates a new Json reader.
+     *
+     * @param filePath the file path
+     */
     JSONReader(String filePath){
         
         try {
@@ -30,14 +36,26 @@ class JSONReader {
         }
         
     }
-    
-    
+
+
+    /**
+     * Get value as object.
+     *
+     * @param value the value
+     * @return the object
+     */
     Object getValue(Enum value){
         
         return this.json.get(value.name());
     }
-    
-    
+
+
+    /**
+     * Get map of a specific name.
+     *
+     * @param value the value
+     * @return the map
+     */
     Map<Object, Object> getMap(Enum value){
         
         Map map = (Map) this.json.get(value.name());

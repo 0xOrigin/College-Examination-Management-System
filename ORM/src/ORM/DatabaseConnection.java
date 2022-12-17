@@ -8,18 +8,25 @@ import java.io.File;
 import AppDataReader.*;
 
 /**
+ * The class Database connection.
  *
  * @author 0xOrigin
  */
 class DatabaseConnection {
     
-    // Singleton pattern
+    // Singleton design pattern
     private static Connection uniqueInstance;
     
     private DatabaseConnection(){
 
     }
-    
+
+    /**
+     * Get connection instance.
+     *
+     * @param connStrings the connection string
+     * @return the connection string
+     */
     static Connection getInstance(ConnectionString connStrings){
     
         try {

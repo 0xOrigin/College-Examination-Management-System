@@ -10,10 +10,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class User controller imp.
+ */
 public class UserControllerImp implements UserController {
 
+    /**
+     * The Db context.
+     */
     protected final DbContext dbContext;
 
+    /**
+     * Instantiates a new User controller imp.
+     *
+     * @param dbContext the db context
+     */
     public UserControllerImp(DbContext dbContext) {
         this.dbContext = dbContext;
     }

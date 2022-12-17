@@ -9,11 +9,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
+ * The class Image converter.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class ImageConverter {
-    
+
+    /**
+     * Read image.
+     *
+     * @param filePath the file path
+     * @return the byte array
+     */
     public static byte[] readImage(String filePath) {
         
         ByteArrayOutputStream byteArrayOutputStream = null;
@@ -35,7 +42,13 @@ public class ImageConverter {
         
         return byteArrayOutputStream != null ? byteArrayOutputStream.toByteArray() : null;
     }
-    
+
+    /**
+     * Get image.
+     *
+     * @param imageArray the image byte array
+     * @return the image instance
+     */
     public static Image getImage(byte[] imageArray){
     
         return Toolkit.getDefaultToolkit().createImage(imageArray);

@@ -1,26 +1,39 @@
 package AppDataReader;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
+ * The class Config path.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 class ConfigPath {
     
     private final String configFilePath;
 
+    /**
+     * Instantiates a new Config path.
+     */
     ConfigPath() {
         
         this.configFilePath = "App_Data/App.config";
     }
-    
+
+    /**
+     * Instantiates a new Config path.
+     *
+     * @param path the path
+     */
     ConfigPath(String path){
     
         this.configFilePath = path;
     }
-    
+
+    /**
+     * Get Config file path.
+     *
+     * @return the config file path
+     */
     String get(){
     
         if(!this.isValidPath())

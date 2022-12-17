@@ -13,11 +13,31 @@ import javafx.scene.control.TextField;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The class Add question.
+ */
 public class AddQuestion extends Utilities {
 
     QuestionValidator questionValidator = new QuestionValidator();
     ExamValidator examValidator = new ExamValidator();
 
+    /**
+     * Add.
+     *
+     * @param event                 the event
+     * @param alert                 the alert
+     * @param questionController    the question controller
+     * @param examController        the exam controller
+     * @param selectSubjectField    the select subject field
+     * @param examIdField           the exam id field
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     */
     public void add(ActionEvent event, Alert alert, QuestionController questionController, ExamController examController,
                     ComboBox<String> selectSubjectField, TextField examIdField, TextField contentField, TextField choice1Field,
                     TextField choice2Field, TextField choice3Field, TextField choice4Field, TextField choice5Field,
@@ -55,6 +75,19 @@ public class AddQuestion extends Utilities {
         return choices.get(indexOfCorrectAnswerChoice).getText().trim();
     }
 
+    /**
+     * Reset tab view.
+     *
+     * @param selectSubjectField    the select subject field
+     * @param examIdField           the exam id field
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     */
     public void resetTabView(ComboBox<String> selectSubjectField, TextField examIdField, TextField contentField, TextField choice1Field,
                              TextField choice2Field, TextField choice3Field, TextField choice4Field, TextField choice5Field,
                              ComboBox<String> correctAnswerSelector){

@@ -4,10 +4,21 @@ import CEMS.Models.DbContext;
 
 import java.util.Arrays;
 
+/**
+ * The class Login controller imp.
+ */
 public class LoginControllerImp implements LoginController {
 
+    /**
+     * The Db context.
+     */
     protected final DbContext dbContext;
 
+    /**
+     * Instantiates a new Login controller imp.
+     *
+     * @param dbContext the db context
+     */
     public LoginControllerImp(DbContext dbContext){
         this.dbContext = dbContext;
     }

@@ -10,11 +10,18 @@ import ORM.Utilities.*;
 import AppDataReader.*;
 
 /**
+ * The class Query executor.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class QueryExecutor {
-    
+
+    /**
+     * Execute.
+     *
+     * @param query       the query
+     * @param imagesPaths the images paths
+     */
     static void execute(String query, Queue<String> imagesPaths){
         
         if(query.isBlank())
@@ -46,8 +53,14 @@ public class QueryExecutor {
         
         new Resource(preparedStatement).close();       
     }
-    
-    
+
+
+    /**
+     * Execute select query.
+     *
+     * @param selectQuery the select query
+     * @return the result set
+     */
     public static ResultSet executeSelectQuery(SelectQuery selectQuery){
     
         String query = selectQuery.toString();

@@ -10,10 +10,29 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Update question.
+ */
 public class UpdateQuestion extends Utilities {
 
     QuestionValidator questionValidator = new QuestionValidator();
 
+    /**
+     * Update.
+     *
+     * @param event                 the event
+     * @param alert                 the alert
+     * @param controller            the controller
+     * @param questionIdField       the question id field
+     * @param username              the username
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     */
     public void update(ActionEvent event, Alert alert, QuestionController controller, TextField questionIdField,
                        String username, TextField contentField, TextField choice1Field, TextField choice2Field,
                        TextField choice3Field, TextField choice4Field, TextField choice5Field,
@@ -56,6 +75,23 @@ public class UpdateQuestion extends Utilities {
     }
 
 
+    /**
+     * Set question data.
+     *
+     * @param event                 the event
+     * @param alert                 the alert
+     * @param controller            the controller
+     * @param questionIdField       the question id field
+     * @param username              the username
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     * @param updateButton          the update button
+     */
     public void setQuestionData(ActionEvent event, Alert alert, QuestionController controller, TextField questionIdField,
                                 String username, TextField contentField, TextField choice1Field, TextField choice2Field,
                                 TextField choice3Field, TextField choice4Field, TextField choice5Field,
@@ -101,6 +137,19 @@ public class UpdateQuestion extends Utilities {
         correctAnswerSelector.getSelectionModel().select(index);
     }
 
+    /**
+     * Set update elements status.
+     *
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     * @param updateButton          the update button
+     * @param disable               the disable
+     */
     public void setUpdateElementsStatus(TextField contentField, TextField choice1Field, TextField choice2Field,
                                         TextField choice3Field, TextField choice4Field, TextField choice5Field,
                                         ComboBox<String> correctAnswerSelector, Button updateButton, boolean disable){
@@ -114,6 +163,17 @@ public class UpdateQuestion extends Utilities {
         updateButton.setDisable(disable);
     }
 
+    /**
+     * Clear update elements.
+     *
+     * @param contentField          the content field
+     * @param choice1Field          the choice 1 field
+     * @param choice2Field          the choice 2 field
+     * @param choice3Field          the choice 3 field
+     * @param choice4Field          the choice 4 field
+     * @param choice5Field          the choice 5 field
+     * @param correctAnswerSelector the correct answer selector
+     */
     public void clearUpdateElements(TextField contentField, TextField choice1Field,
                              TextField choice2Field, TextField choice3Field, TextField choice4Field, TextField choice5Field,
                                     ComboBox<String> correctAnswerSelector){

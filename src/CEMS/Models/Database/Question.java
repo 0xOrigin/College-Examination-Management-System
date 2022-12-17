@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Question.
+ */
 public class Question extends ModelUtility {
 
     private final Adapter questionModel;
@@ -18,11 +21,28 @@ public class Question extends ModelUtility {
     private ResultSet resultSet;
     private Resource resource;
 
+    /**
+     * Instantiates a new Question.
+     *
+     * @param adapter the adapter
+     */
     public Question(Adapter adapter){
         super(adapter);
         this.questionModel = adapter;
     }
 
+    /**
+     * Insert.
+     *
+     * @param examID        the exam id
+     * @param content       the question content
+     * @param choice1       the choice 1
+     * @param choice2       the choice 2
+     * @param choice3       the choice 3
+     * @param choice4       the choice 4
+     * @param choice5       the choice 5
+     * @param correctAnswer the correct answer
+     */
     public void insert(String examID, String content, String choice1, String choice2, String choice3,
                        String choice4, String choice5, String correctAnswer){
 
@@ -34,14 +54,32 @@ public class Question extends ModelUtility {
         this.questionModel.insert(fields, values);
     }
 
+    /**
+     * Update.
+     *
+     * @param fields the fields
+     * @param values the values
+     * @param id     the question id
+     */
     public void update(List<Enum> fields, List<Object> values, String id){
         this.questionModel.update(fields, values, this.questionModel.Where(Column.ID, "=", id));
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the question id
+     */
     public void delete(String id){
         this.questionModel.delete(this.questionModel.Where(Column.ID, "=", id));
     }
 
+    /**
+     * Get all questions for a specific exam.
+     *
+     * @param examID the exam id
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllQuestionsFor(String examID){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.Content, Column.Choice1, Column.Choice2, Column.Choice3,
@@ -55,6 +93,13 @@ public class Question extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Is question available to a specific user.
+     *
+     * @param username   the username
+     * @param questionID the question id
+     * @return the boolean
+     */
     public boolean isQuestionAvailableToUser(String username, String questionID){
 
         boolean isAvailable = false;

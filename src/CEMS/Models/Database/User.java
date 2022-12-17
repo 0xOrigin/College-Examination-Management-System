@@ -9,17 +9,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * The class User.
+ */
 public class User extends ModelUtility {
     private final Adapter userModel;
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param adapter the adapter
+     */
     public User(Adapter adapter){
         super(adapter);
         this.userModel = adapter;
     }
 
+    /**
+     * Insert.
+     *
+     * @param name     the name
+     * @param email    the email
+     * @param gender   the gender
+     * @param username the username
+     * @param password the password
+     * @param type     the type
+     */
     public void insert(String name, String email, String gender, String username, String password, String type){
 
         List<Enum> fields = Arrays.asList(Column.Name, Column.Email, Column.Gender, Column.Username, Column.Password,
@@ -30,14 +48,32 @@ public class User extends ModelUtility {
         this.userModel.insert(fields, values);
     }
 
+    /**
+     * Update.
+     *
+     * @param fields   the fields
+     * @param values   the values
+     * @param username the username
+     */
     public void update(List<Enum> fields, List<Object> values, String username){
         this.userModel.update(fields, values, this.userModel.Where(Column.Username, "=", username));
     }
 
+    /**
+     * Delete.
+     *
+     * @param username the username
+     */
     public void delete(String username){
         this.userModel.delete(this.userModel.Where(Column.Username, "=", username));
     }
 
+    /**
+     * Is user exists.
+     *
+     * @param username the username
+     * @return the boolean
+     */
     public boolean isUserExists(String username){
 
         boolean isExists = false;
@@ -63,6 +99,13 @@ public class User extends ModelUtility {
         return isExists;
     }
 
+    /**
+     * Is valid account.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the boolean
+     */
     public boolean isValidAccount(String username, String password){
 
         if(!this.isUserExists(username))
@@ -71,6 +114,11 @@ public class User extends ModelUtility {
         return super.isPasswordMatch(username, password);
     }
 
+    /**
+     * Get all users.
+     *
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllUsers(){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.Name, Column.Email, Column.Gender,
@@ -83,6 +131,13 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Search by.
+     *
+     * @param column  the column
+     * @param pattern the pattern
+     * @return the list
+     */
     public List<Map<Enum, Object>> searchBy(Enum column, String pattern){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.Name, Column.Email, Column.Gender,
@@ -97,6 +152,12 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Get all registered subjects for a specific user.
+     *
+     * @param username the username
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllRegisteredSubjectsFor(String username){
 
         List<Enum> fields = Arrays.asList(Column.Code, Column.SubjectName);
@@ -110,6 +171,12 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Get all exams for a specific user.
+     *
+     * @param username the username
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllExamsFor(String username){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.SubjectCode, Column.SubjectName, Column.ExamName, Column.Duration);
@@ -124,6 +191,12 @@ public class User extends ModelUtility {
         return super.getList(fields, this.selectQuery);
     }
 
+    /**
+     * Count of registered subjects for a specific user.
+     *
+     * @param username the username
+     * @return the count
+     */
     public int countOfRegisteredSubjectsFor(String username){
 
         int count = 0;

@@ -5,22 +5,37 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+
 /**
+ * The class SQL lite adapter.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class SQLiteAdapter extends DML implements Adapter {
     
     private final Enum table;
     private final Enum uniqueKey1;
     private Enum uniqueKey2;
-    
+
+    /**
+     * Instantiates a new SQL lite adapter.
+     *
+     * @param table                the table
+     * @param uniqueKeyOfthisTable the unique key of this table
+     */
     public SQLiteAdapter(Enum table, Enum uniqueKeyOfthisTable){
     
         this.table = table;
         this.uniqueKey1 = uniqueKeyOfthisTable;
     }
 
+    /**
+     * Instantiates a new SQL lite adapter.
+     *
+     * @param table                 the table
+     * @param uniqueKeyOfthisTable1 the unique key of this table 1
+     * @param uniqueKeyOfthisTable2 the unique key of this table 2
+     */
     public SQLiteAdapter(Enum table, Enum uniqueKeyOfthisTable1, Enum uniqueKeyOfthisTable2){
 
         this.table = table;
@@ -100,7 +115,7 @@ public class SQLiteAdapter extends DML implements Adapter {
                 valuesString = valuesString.concat("\'" + value + "\'");
             
             else
-                valuesString = valuesString.concat(value.toString());
+                valuesString = valuesString.concat(value.toString().replaceAll("=", ""));
          
             valuesString = valuesString.concat((size-- == 1 ? "" : ", ")); // For String ending.
         }

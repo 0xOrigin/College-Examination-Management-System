@@ -1,9 +1,11 @@
 package ORM;
 
 import java.util.List;
+
 /**
+ * The class Select query.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 
 public class SelectQuery {
@@ -12,7 +14,12 @@ public class SelectQuery {
     private final List<Object> fields;
     private final String where, orderBy, limit, like;
     private final String freeStatement;
-    
+
+    /**
+     * Instantiates a new Select query.
+     *
+     * @param builder the builder
+     */
     public SelectQuery(SelectBuilder builder){
         
         this.table = builder.getTableName();

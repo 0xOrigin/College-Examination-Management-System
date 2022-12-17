@@ -3,14 +3,18 @@ package AppDataReader;
 import java.util.Map;
 
 /**
+ * The class Connection string imp.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class ConnectionStringImp implements ConnectionString {
     
     private final JSONReader jsonReader;
     private final Map<Object, Object> connMap;
-    
+
+    /**
+     * Instantiates a new Connection string imp.
+     */
     public ConnectionStringImp(){
     
         this.jsonReader = new JSONReader(new ConfigPath().get());

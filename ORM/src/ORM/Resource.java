@@ -7,16 +7,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * The type Resource.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public class Resource {
     
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
-    
-    
+
+
+    /**
+     * Instantiates a new Resource.
+     *
+     * @param resource the resource instance
+     */
     public Resource(ResultSet resource){
     
         this.resultSet = resource;
@@ -30,8 +36,13 @@ public class Resource {
             ModelExceptionHandler.handle(ex, true);
         }
     }
-    
-    
+
+
+    /**
+     * Instantiates a new Resource.
+     *
+     * @param resource the resource instance
+     */
     public Resource(Statement resource){
     
         this.resultSet = null;
@@ -45,8 +56,13 @@ public class Resource {
             ModelExceptionHandler.handle(ex, true);
         } 
     }
-    
-    
+
+
+    /**
+     * Is result set empty.
+     *
+     * @return the boolean
+     */
     public boolean isResultSetEmpty(){
     
         try {
@@ -62,8 +78,11 @@ public class Resource {
         
         return false;
     }
-    
-    
+
+
+    /**
+     * Close.
+     */
     public void close(){
     
         try {

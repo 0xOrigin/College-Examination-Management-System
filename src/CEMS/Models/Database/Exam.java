@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Exam.
+ */
 public class Exam extends ModelUtility {
 
     private final Adapter examModel;
@@ -18,11 +21,23 @@ public class Exam extends ModelUtility {
     private ResultSet resultSet;
     private Resource resource;
 
+    /**
+     * Instantiates a new Exam.
+     *
+     * @param adapter the adapter
+     */
     public Exam(Adapter adapter){
         super(adapter);
         this.examModel = adapter;
     }
 
+    /**
+     * Insert.
+     *
+     * @param subjectCode the subject code
+     * @param name        the name
+     * @param duration    the duration
+     */
     public void insert(String subjectCode, String name, String duration){
 
         List<Enum> fields = Arrays.asList(Column.SubjectCode, Column.Name, Column.Duration);
@@ -32,14 +47,32 @@ public class Exam extends ModelUtility {
         this.examModel.insert(fields, values);
     }
 
+    /**
+     * Update.
+     *
+     * @param fields the fields
+     * @param values the values
+     * @param id     the exam id
+     */
     public void update(List<Enum> fields, List<Object> values, String id){
         this.examModel.update(fields, values, this.examModel.Where(Column.ID, "=", id));
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the exam id
+     */
     public void delete(String id){
         this.examModel.delete(this.examModel.Where(Column.ID, "=", id));
     }
 
+    /**
+     * Is name available.
+     *
+     * @param examName the exam name
+     * @return the boolean
+     */
     public boolean isNameAvailable(String examName){
 
         boolean isAvailable = false;
@@ -67,6 +100,13 @@ public class Exam extends ModelUtility {
     }
 
 
+    /**
+     * Is exam belongs to subject.
+     *
+     * @param examID      the exam id
+     * @param subjectCode the subject code
+     * @return the boolean
+     */
     public boolean isExamBelongsToSubject(String examID, String subjectCode){
 
         boolean isBelongs = false;
@@ -95,6 +135,12 @@ public class Exam extends ModelUtility {
         return isBelongs;
     }
 
+    /**
+     * Get all exams of subject.
+     *
+     * @param subjectCode the subject code
+     * @return the list
+     */
     public List<Map<Enum, Object>> getAllExamsOfSubject(String subjectCode){
 
         List<Enum> fields = Arrays.asList(Column.ID, Column.Name, Column.Duration);

@@ -8,8 +8,21 @@ import javafx.scene.control.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class List and search subjects.
+ */
 public class ListAndSearchSubjects extends Utilities {
 
+    /**
+     * Search.
+     *
+     * @param event       the event
+     * @param alert       the alert
+     * @param controller  the controller
+     * @param tableView   the table view
+     * @param searchField the search field
+     * @param columnField the column field
+     */
     public void search(ActionEvent event, Alert alert, SubjectController controller, TableView<Map> tableView,
                        TextField searchField, ComboBox<Enum> columnField){
 
@@ -25,6 +38,16 @@ public class ListAndSearchSubjects extends Utilities {
         }
     }
 
+    /**
+     * List.
+     *
+     * @param controller     the controller
+     * @param operationField the operation field
+     * @param tableView      the table view
+     * @param searchField    the search field
+     * @param columnField    the column field
+     * @param searchButton   the search button
+     */
     public void list(SubjectController controller, ComboBox<String> operationField, TableView<Map> tableView,
                      TextField searchField, ComboBox<Enum> columnField, Button searchButton){
 
@@ -42,6 +65,14 @@ public class ListAndSearchSubjects extends Utilities {
         }
     }
 
+    /**
+     * Set search elements status.
+     *
+     * @param searchField  the search field
+     * @param columnField  the column field
+     * @param searchButton the search button
+     * @param disable      the disable determination
+     */
     public void setSearchElementsStatus(TextField searchField, ComboBox<Enum> columnField, Button searchButton, boolean disable){
         if(disable)
             searchField.clear();
@@ -50,6 +81,15 @@ public class ListAndSearchSubjects extends Utilities {
         searchField.setDisable(disable);
     }
 
+    /**
+     * Reset tab view.
+     *
+     * @param operationField the operation field
+     * @param tableView      the table view
+     * @param searchField    the search field
+     * @param columnField    the column field
+     * @param searchButton   the search button
+     */
     public void resetTabView(ComboBox<String> operationField, TableView<Map> tableView,
                              TextField searchField, ComboBox<Enum> columnField, Button searchButton){
 

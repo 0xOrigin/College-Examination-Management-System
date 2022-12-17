@@ -24,6 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * The class Admin dashboard view controller.
+ */
 public class AdminDashboardViewController extends Utilities implements Controller, Initializable {
 
     String name;
@@ -128,11 +131,21 @@ public class AdminDashboardViewController extends Utilities implements Controlle
     @FXML
     private TableColumn<Map, Enum> nameTableColumn1;
 
+    /**
+     * On logout button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onLogoutButtonAction(ActionEvent event) {
         super.changeScene(event, "LoginView.fxml", "College Examination Management System");
     }
 
+    /**
+     * On add user button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onAddUserButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -140,6 +153,11 @@ public class AdminDashboardViewController extends Utilities implements Controlle
                 genderField, typeField);
     }
 
+    /**
+     * On update user button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onUpdateUserButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -147,6 +165,11 @@ public class AdminDashboardViewController extends Utilities implements Controlle
                 emailField1, passwordField1, this.username);
     }
 
+    /**
+     * On current username button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentUsernameButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
@@ -154,72 +177,130 @@ public class AdminDashboardViewController extends Utilities implements Controlle
                 passwordField1, updateUserButton);
     }
 
+    /**
+     * On current username field key press.
+     *
+     * @param event the event
+     */
     @FXML
     void onCurrentUsernameFieldKeyPress(KeyEvent event) {
         new UpdateUser().clearUpdateElements(emailField1, usernameField1, passwordField1);
         new UpdateUser().setUpdateElementsStatus(emailField1, usernameField1, passwordField1, updateUserButton, true);
     }
 
+    /**
+     * On delete user button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onDeleteUserButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new DeleteUser().delete(event, alert, userController, usernameField2, this.username);
     }
 
+    /**
+     * On add subject button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onAddSubjectButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new AddSubject().add(event, alert, subjectController, subjectNameField, codeField, descriptionField);
     }
 
+    /**
+     * On delete subject button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onDeleteSubjectButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new DeleteSubject().delete(event, alert, subjectController, codeField1);
     }
 
+    /**
+     * On assign button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onAssignButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new AssignSubject().assign(event, alert, userController, subjectController, usernameField3, codeField2);
     }
 
+    /**
+     * On select operation action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSelectOperationAction(ActionEvent event) {
         new ListAndSearchUsers().list(userController, operationField, tableView, searchField,
                 columnField, searchButton);
     }
 
+    /**
+     * On select operation 1 action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSelectOperation1Action(ActionEvent event) {
         new ListAndSearchSubjects().list(subjectController, operationField1, tableView1, searchField1,
                 columnField1, searchButton1);
     }
 
+    /**
+     * On search button action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSearchButtonAction(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new ListAndSearchUsers().search(event, alert, userController, tableView, searchField, columnField);
     }
 
+    /**
+     * On search button 1 action.
+     *
+     * @param event the event
+     */
     @FXML
     void onSearchButton1Action(ActionEvent event) {
         alert = new Alert(Alert.AlertType.ERROR);
         new ListAndSearchSubjects().search(event, alert, subjectController, tableView1, searchField1, columnField1);
     }
 
+    /**
+     * On list search users tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onListSearchUsersTabSelection(Event event) {
         if(listSearchUsersTab.isSelected())
             new ListAndSearchUsers().resetTabView(operationField, tableView, searchField, columnField, searchButton);
     }
 
+    /**
+     * On list search subjects tab selection.
+     *
+     * @param event the event
+     */
     @FXML
     void onListSearchSubjectsTabSelection(Event event) {
         if(listSearchSubjectsTab.isSelected())
             new ListAndSearchSubjects().resetTabView(operationField1, tableView1, searchField1, columnField1, searchButton1);
     }
 
+    /**
+     * Initialize list search subjects table.
+     */
     void initializeListSearchSubjectsTable(){
         codeTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Code));
         nameTableColumn1.setCellValueFactory(new MapValueFactory<>(Column.Name));
@@ -228,6 +309,9 @@ public class AdminDashboardViewController extends Utilities implements Controlle
         tableView1.getColumns().setAll(Arrays.asList(codeTableColumn, nameTableColumn1, descriptionTableColumn));
     }
 
+    /**
+     * Initialize list search users table.
+     */
     void initializeListSearchUsersTable(){
         idTableColumn.setCellValueFactory(new MapValueFactory<>(Column.ID));
         nameTableColumn.setCellValueFactory(new MapValueFactory<>(Column.Name));

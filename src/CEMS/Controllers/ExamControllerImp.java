@@ -7,10 +7,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Exam controller imp.
+ */
 public class ExamControllerImp implements ExamController {
 
+    /**
+     * The Db context.
+     */
     protected final DbContext dbContext;
 
+    /**
+     * Instantiates a new Exam controller imp.
+     *
+     * @param dbContext the db context
+     */
     public ExamControllerImp(DbContext dbContext) {
         this.dbContext = dbContext;
     }

@@ -7,9 +7,21 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Delete subject.
+ */
 public class DeleteSubject extends Utilities {
+
     SubjectValidator subjectValidator = new SubjectValidator();
 
+    /**
+     * Delete.
+     *
+     * @param event      the event
+     * @param alert      the alert
+     * @param controller the controller
+     * @param codeField  the code field
+     */
     public void delete(ActionEvent event, Alert alert, SubjectController controller, TextField codeField){
 
         super.setAlertOwner(event, alert);

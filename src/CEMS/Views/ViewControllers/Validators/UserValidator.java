@@ -10,8 +10,19 @@ import javafx.scene.control.TextField;
 
 import java.util.Arrays;
 
+/**
+ * The class User validator.
+ */
 public class UserValidator extends Utilities {
 
+    /**
+     * Validate name.
+     *
+     * @param nameField  the name field
+     * @param alert      the alert
+     * @param controller the controller
+     * @return the boolean
+     */
     public boolean validateName(TextField nameField, Alert alert, UserController controller){
         String alertTitle = "Name field";
         String name = nameField.getText().trim();
@@ -26,6 +37,14 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate email.
+     *
+     * @param emailField the email field
+     * @param alert      the alert
+     * @param controller the controller
+     * @return the boolean
+     */
     public boolean validateEmail(TextField emailField, Alert alert, UserController controller){
         String alertTitle = "Email field";
         String email = emailField.getText().trim();
@@ -40,6 +59,14 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate username.
+     *
+     * @param usernameField the username field
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean validateUsername(TextField usernameField, Alert alert, UserController controller){
         String alertTitle = "Username field";
         String username = usernameField.getText().trim();
@@ -54,6 +81,14 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check self deletion.
+     *
+     * @param usernameField    the username field
+     * @param alert            the alert
+     * @param loggedInUsername the logged in username
+     * @return the boolean
+     */
     public boolean checkSelfDeletion(TextField usernameField, Alert alert, StringBuilder loggedInUsername){
         String alertTitle = "Username field";
         String username = usernameField.getText().trim();
@@ -64,6 +99,14 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check user type before assign.
+     *
+     * @param usernameField the username field
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean checkUserTypeBeforeAssign(TextField usernameField, Alert alert, UserController controller){
         String alertTitle = "User Type";
         String username = usernameField.getText().trim();
@@ -75,6 +118,15 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check if assigned before.
+     *
+     * @param usernameField the username field
+     * @param subjectCode   the subject code
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean checkIfAssignedBefore(TextField usernameField, TextField subjectCode, Alert alert, UserController controller){
         String alertTitle = "Assign duplication";
         String username = usernameField.getText().trim();
@@ -85,6 +137,15 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Check username availability.
+     *
+     * @param usernameField the username field
+     * @param registerVal   the register val
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean checkUsernameAvailability(TextField usernameField, boolean registerVal, Alert alert, UserController controller){
         String alertTitle = "Username field";
         String username = usernameField.getText().trim();
@@ -100,6 +161,14 @@ public class UserValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate password.
+     *
+     * @param passwordField the password field
+     * @param alert         the alert
+     * @param controller    the controller
+     * @return the boolean
+     */
     public boolean validatePassword(PasswordField passwordField, Alert alert, UserController controller){
         String alertTitle = "Password field";
         String password = passwordField.getText().trim();

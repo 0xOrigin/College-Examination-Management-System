@@ -1,5 +1,8 @@
 package CEMS.Models.Enum;
 
+/**
+ * The enum Column.
+ */
 public enum Column {
 
     ID,

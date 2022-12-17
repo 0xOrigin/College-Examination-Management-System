@@ -9,10 +9,24 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Assign subject.
+ */
 public class AssignSubject extends Utilities {
+
     UserValidator userValidator = new UserValidator();
     SubjectValidator subjectValidator = new SubjectValidator();
 
+    /**
+     * Assign.
+     *
+     * @param event             the event
+     * @param alert             the alert
+     * @param userController    the user controller
+     * @param subjectController the subject controller
+     * @param usernameField     the username field
+     * @param codeField         the code field
+     */
     public void assign(ActionEvent event, Alert alert, UserController userController, SubjectController subjectController,
                        TextField usernameField, TextField codeField){
 

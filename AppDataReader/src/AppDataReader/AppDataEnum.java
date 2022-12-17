@@ -1,17 +1,26 @@
 package AppDataReader;
 
 /**
+ * The enum App Data Names .
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 public enum AppDataEnum {
-    
-    // For App_Data
-    
-    ConnectionStrings, ClassName, ClassPath, DatabasePath,
 
-    SocketConfigurations, Backlog,
-    
-    PersonalName, EmailConfigurations, SenderEmail, SenderPassword, Host, Port;
-    
+    ConnectionStrings,
+    EmailConfigurations,
+    SocketConfigurations,
+
+    ClassName,
+    ClassPath,
+    DatabasePath,
+
+    PersonalName,
+    SenderEmail,
+    SenderPassword,
+    Host,
+    Port,
+
+    Backlog;
+
 }

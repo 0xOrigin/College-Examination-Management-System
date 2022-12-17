@@ -5,10 +5,21 @@ import CEMS.Models.DbContext;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The class Question controller imp.
+ */
 public class QuestionControllerImp implements QuestionController {
 
+    /**
+     * The Db context.
+     */
     protected final DbContext dbContext;
 
+    /**
+     * Instantiates a new Question controller imp.
+     *
+     * @param dbContext the db context
+     */
     public QuestionControllerImp(DbContext dbContext) {
         this.dbContext = dbContext;
     }

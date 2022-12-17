@@ -7,9 +7,22 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Delete user.
+ */
 public class DeleteUser extends Utilities {
+
     UserValidator userValidator = new UserValidator();
 
+    /**
+     * Delete.
+     *
+     * @param event            the event
+     * @param alert            the alert
+     * @param controller       the controller
+     * @param usernameField    the username field
+     * @param loggedInUsername the logged-in username
+     */
     public void delete(ActionEvent event, Alert alert, UserController controller, TextField usernameField,
                        StringBuilder loggedInUsername){
 

@@ -7,8 +7,20 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 
+/**
+ * The class Question validator.
+ */
 public class QuestionValidator extends Utilities {
 
+    /**
+     * Validate question id.
+     *
+     * @param questionIdField the question id field
+     * @param alert           the alert
+     * @param controller      the controller
+     * @param username        the username
+     * @return the boolean
+     */
     public boolean validateQuestionID(TextField questionIdField, Alert alert, QuestionController controller, String username){
         String alertTitle = "Question ID field";
         String questionID = questionIdField.getText().trim();
@@ -23,6 +35,13 @@ public class QuestionValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate question content.
+     *
+     * @param contentField the content field
+     * @param alert        the alert
+     * @return the boolean
+     */
     public boolean validateQuestionContent(TextField contentField, Alert alert){
         String alertTitle = "Question Content field";
         String content = contentField.getText().trim();
@@ -33,6 +52,14 @@ public class QuestionValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate choice.
+     *
+     * @param choiceField the choice field
+     * @param alert       the alert
+     * @param choiceNum   the choice number
+     * @return the boolean
+     */
     public boolean validateChoice(TextField choiceField, Alert alert, int choiceNum){
         String alertTitle = "Choice" + choiceNum + " field";
         String choice = choiceField.getText().trim();
@@ -43,6 +70,13 @@ public class QuestionValidator extends Utilities {
         return true;
     }
 
+    /**
+     * Validate correct answer.
+     *
+     * @param correctAnswerSelector the correct answer selector
+     * @param alert                 the alert
+     * @return the boolean
+     */
     public boolean validateCorrectAnswer(ComboBox<String> correctAnswerSelector, Alert alert) {
         String alertTitle = "Correct Answer field";
         int indexOfCurrentSelection = correctAnswerSelector.getSelectionModel().getSelectedIndex();

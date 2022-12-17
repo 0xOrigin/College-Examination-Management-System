@@ -9,6 +9,9 @@ import ORM.*;
 import ORM.Utilities.*;
 
 
+/**
+ * The class Model utility.
+ */
 abstract class ModelUtility {
     
     private final Adapter modelInstance;
@@ -16,15 +19,27 @@ abstract class ModelUtility {
     private SelectQuery selectQuery;
     private ResultSet resultSet;
     private Resource resource;
-    
-    
+
+
+    /**
+     * Instantiates a new Model utility.
+     *
+     * @param adapter the adapter
+     */
     protected ModelUtility(Adapter adapter){
     
         this.modelInstance = adapter;
         this.uniqueKey = adapter.getUniqueKeyColumnName();
     }
-    
-    
+
+
+    /**
+     * Get info map.
+     *
+     * @param fields     the fields
+     * @param identifier the identifier
+     * @return the map
+     */
     public Map<Enum, Object> getInfo(List<Enum> fields, String identifier){
         
         Map<Enum, Object> info = new HashMap<>();
@@ -51,7 +66,14 @@ abstract class ModelUtility {
         return info;
     }
 
-    
+
+    /**
+     * Is password match.
+     *
+     * @param identifier the identifier
+     * @param password   the password
+     * @return the boolean
+     */
     public boolean isPasswordMatch(String identifier, String password){
     
         boolean isMatch = false;
@@ -78,6 +100,13 @@ abstract class ModelUtility {
         return isMatch;
     }
 
+    /**
+     * Get list.
+     *
+     * @param fields      the fields
+     * @param selectQuery the select query
+     * @return the list
+     */
     public List<Map<Enum, Object>> getList(List<Enum> fields, SelectQuery selectQuery){
 
         Map<Enum, Object> info;

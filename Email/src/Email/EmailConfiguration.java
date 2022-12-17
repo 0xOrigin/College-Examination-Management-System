@@ -8,8 +8,9 @@ import AppDataReader.AppDataEnum;
 import AppDataReader.EmailConfig;
 
 /**
+ * The class Email configuration.
  *
- * @author xorigin
+ * @author 0xOrigin
  */
 class EmailConfiguration {
     
@@ -39,12 +40,27 @@ class EmailConfiguration {
         
         createSession();
     }
-    
+
+    /**
+     * Set default email config.
+     *
+     * @param emailConfig the email config
+     * @return the email configuration instance
+     */
     static EmailConfiguration setDefaultConfig(EmailConfig emailConfig){
     
         return new EmailConfiguration(emailConfig);
     }
-    
+
+    /**
+     * Set full email config.
+     *
+     * @param senderMail     the sender mail
+     * @param senderPassword the sender password
+     * @param host           the host
+     * @param port           the port
+     * @return the email configuration instance
+     */
     static EmailConfiguration setFullConfig(String senderMail, String senderPassword, String host, String port){
     
         return new EmailConfiguration(senderMail, senderPassword, host, port);
@@ -70,12 +86,22 @@ class EmailConfiguration {
         }); 
     
     }
-    
+
+    /**
+     * Get session.
+     *
+     * @return the session
+     */
     Session getSession(){
     
         return this.session;
     }
-    
+
+    /**
+     * Get sender email.
+     *
+     * @return the sender email
+     */
     String getSenderEmail(){
     
         return this.senderMail;

@@ -7,10 +7,22 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+/**
+ * The class Delete question.
+ */
 public class DeleteQuestion extends Utilities {
 
     QuestionValidator questionValidator = new QuestionValidator();
 
+    /**
+     * Delete.
+     *
+     * @param event           the event
+     * @param alert           the alert
+     * @param controller      the controller
+     * @param questionIdField the question id field
+     * @param username        the username
+     */
     public void delete(ActionEvent event, Alert alert, QuestionController controller, TextField questionIdField, String username){
 
         super.setAlertOwner(event, alert);
