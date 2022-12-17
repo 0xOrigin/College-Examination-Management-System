@@ -75,7 +75,7 @@ public class Result extends Utilities {
         int iterator = 0;
         Map<String, String> studentAnswers = this.exam.getStudentAnswers();
 
-        correctedExamField.appendText("=========================== Beginning of exam ===========================\n\n");
+        correctedExamField.appendText("=========================== Beginning of exam ============================\n\n");
 
         for(Map<Enum, Object> question : this.exam.getQuestions()){
             correctedExamField.appendText("# Question number: [" + (iterator++ + 1) + "]\n");

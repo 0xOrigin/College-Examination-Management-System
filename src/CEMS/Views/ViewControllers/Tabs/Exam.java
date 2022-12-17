@@ -26,7 +26,7 @@ public class Exam extends Utilities {
     private Alert alert;
     private Timer timer;
     private ToggleGroup Answers;
-    private Label questionLabel;
+    private TextArea questionTextArea;
     private RadioButton choice1Button;
     private RadioButton choice2Button;
     private RadioButton choice3Button;
@@ -72,7 +72,7 @@ public class Exam extends Utilities {
     /**
      * Set exam tab attributes.
      *
-     * @param questionLabel    the question label
+     * @param questionTextArea the question text area
      * @param Answers          the answers
      * @param choice1Button    the choice 1 button
      * @param choice2Button    the choice 2 button
@@ -82,11 +82,11 @@ public class Exam extends Utilities {
      * @param prevButton       the prev button
      * @param nextSubmitButton the next submit button
      */
-    public void setExamTabAttributes(Label questionLabel, ToggleGroup Answers, RadioButton choice1Button, RadioButton choice2Button, RadioButton choice3Button,
+    public void setExamTabAttributes(TextArea questionTextArea, ToggleGroup Answers, RadioButton choice1Button, RadioButton choice2Button, RadioButton choice3Button,
                               RadioButton choice4Button, RadioButton choice5Button, Button prevButton, Button nextSubmitButton){
 
         this.Answers = Answers;
-        this.questionLabel = questionLabel;
+        this.questionTextArea = questionTextArea;
         this.choice1Button = choice1Button;
         this.choice2Button = choice2Button;
         this.choice3Button = choice3Button;
@@ -132,7 +132,7 @@ public class Exam extends Utilities {
     }
 
     private void loadCurrentQuestion(int indexOfCurrentQuestion){
-        questionLabel.setText(questions.get(indexOfCurrentQuestion).get(Column.Content).toString());
+        questionTextArea.setText(questions.get(indexOfCurrentQuestion).get(Column.Content).toString());
         choice1Button.setText(questions.get(indexOfCurrentQuestion).get(Column.Choice1).toString());
         choice2Button.setText(questions.get(indexOfCurrentQuestion).get(Column.Choice2).toString());
         disableIfEmptyAnswer(choice2Button);

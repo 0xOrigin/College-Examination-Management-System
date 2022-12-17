@@ -80,7 +80,7 @@ public class StudentDashboardViewController extends Utilities implements Control
     @FXML
     private Button prevButton;
     @FXML
-    private Label questionLabel;
+    private TextArea questionTextArea;
     @FXML
     private Label gradeLabel;
     @FXML
@@ -133,7 +133,7 @@ public class StudentDashboardViewController extends Utilities implements Control
         if(checkIfExamAvailability(event, alert, examID)){
             exam = new Exam(studentID, examID, selectExamField, examNameLabel, totalQuestionsNumLabel, examController, questionController);
 
-            exam.setExamTabAttributes(questionLabel, Answers, choice1Button, choice2Button, choice3Button, choice4Button,
+            exam.setExamTabAttributes(questionTextArea, Answers, choice1Button, choice2Button, choice3Button, choice4Button,
                     choice5Button, prevButton, nextSubmitButton);
 
             if(exam.start(event, alert, showDurationField, timerLabel, currentQuestionNumLabel))
