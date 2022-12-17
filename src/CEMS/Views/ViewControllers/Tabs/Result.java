@@ -75,19 +75,19 @@ public class Result extends Utilities {
         int iterator = 0;
         Map<String, String> studentAnswers = this.exam.getStudentAnswers();
 
-        correctedExamField.appendText("============================ Beginning of exam =============================\n\n");
+        correctedExamField.appendText("=========================== Beginning of exam ===========================\n\n");
 
         for(Map<Enum, Object> question : this.exam.getQuestions()){
             correctedExamField.appendText("# Question number: [" + (iterator++ + 1) + "]\n");
-            correctedExamField.appendText("\t- " + question.get(Column.Content).toString() + "\n");
+            correctedExamField.appendText("\n\t- " + question.get(Column.Content).toString() + "\n");
             String questionID = question.get(Column.ID).toString();
             String studentAnswer = studentAnswers.get(questionID);
-            correctedExamField.appendText("[Your answer]: " + (studentAnswer == null ? "" : studentAnswer) + "\n");
-            correctedExamField.appendText("[Correct answer]: " + question.get(Column.CorrectAnswer).toString() + "\n");
-            correctedExamField.appendText("-------------------------------------------------------------------------------------------------------------------------\n\n");
+            correctedExamField.appendText("\n[Your answer]: " + (studentAnswer == null ? "" : studentAnswer) + "\n");
+            correctedExamField.appendText("\n[Correct answer]: " + question.get(Column.CorrectAnswer).toString() + "\n");
+            correctedExamField.appendText("----------------------------------------------------------------------------------------------------------------------\n\n");
         }
 
-        correctedExamField.appendText("================================ End of exam ==============================\n");
+        correctedExamField.appendText("============================== End of exam ==============================\n");
     }
 
 }
